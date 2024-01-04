@@ -8,7 +8,7 @@ const AuthPage = () => {
         <Flex justifyContent={'center'} alignItems={'center'} gap={10}>
           {/* Lado esquerdo */}
           <Box display={{ base: 'none', md: 'block' }}>
-            <Image src="/auth.webp" h={650} alt="Gatinhos no celular" />
+            <Image src="/auth.webp" w={'100%'} h={'100%'} alt="Gatinhos no celular" />
           </Box>
           
           {/* Lado direito */}
