@@ -13,6 +13,7 @@ const AuthPage = () => {
           
           {/* Lado direito */}
           <VStack spacing={4} align={'stretch'}>
+          <Box textAlign={'center'}>TESTA AI MOOOOOOOO</Box>
             <AuthForm />
             <Box textAlign={'center'}>Desenvolvido por trichains</Box>
             <Flex gap={5} justifyContent={'center'}>
