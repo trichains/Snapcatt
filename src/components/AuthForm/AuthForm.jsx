@@ -32,8 +32,8 @@ const AuthForm = () => {
     <>
       <Box
         border={'1px'}
-        borderColor={'gray.700'}
-        bg={'gray.800'}
+        borderColor={'#1E1F24'}
+        bg={'#0b0c12'}
         borderRadius={10}
         padding={5}>
         <VStack spacing={4}>
@@ -68,7 +68,7 @@ const AuthForm = () => {
 
           <Button
             w={'full'}
-            colorScheme="orange"
+            colorScheme="purple"
             size={'sm'}
             fontSize={14}
             onClick={handleAuth}>
@@ -103,8 +103,8 @@ const AuthForm = () => {
         border={'1px'}
         borderRadius={10}
         padding={5}
-        borderColor={'gray.700'}
-        bg={'gray.800'}>
+        borderColor={'#1E1F24'}
+        bg={'#0b0c12'}>
         <Flex alignItems={'center'} justifyContent={'center'}>
           <Box mx={2} fontSize={14}>
             {isLogin ? 'Não possui uma conta?' : 'Já possui uma conta?'}
