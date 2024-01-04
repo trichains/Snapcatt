@@ -6,7 +6,6 @@ import { ChakraProvider } from '@chakra-ui/react';
 import { extendTheme } from '@chakra-ui/react';
 import { mode } from '@chakra-ui/theme-tools';
 import { BrowserRouter } from 'react-router-dom';
-import AuthPage from './pages/AuthPage/AuthPage.jsx';
 
 const styles = {
   global: (props) => ({
@@ -30,7 +29,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <BrowserRouter>
       <ChakraProvider theme={theme}>
         <App />
-        <AuthPage />
       </ChakraProvider>
     </BrowserRouter>
   </React.StrictMode>

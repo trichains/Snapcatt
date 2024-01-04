@@ -8,11 +8,11 @@ import {
   VStack
 } from '@chakra-ui/react';
 import { useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const AuthForm = () => {
   const [isLogin, setIsLogin] = useState(true);
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [inputs, setInputs] = useState({
     email: '',
     password: '',
@@ -25,9 +25,7 @@ const AuthForm = () => {
       return;
     }
 
-    window.open('https://www.youtube.com/watch?v=nPhERA9G9ng', '_blank');
-
-    // navigate('/');
+    navigate('/');
   };
 
   return (
