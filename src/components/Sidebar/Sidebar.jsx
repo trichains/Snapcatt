@@ -30,7 +30,7 @@ const Sidebar = () => {
       text: 'Criar Post'
     },
     {
-      icon: <Avatar size={'sm'} name="trichains" src="/portfolio.svg" />,
+      icon: <Avatar size={'sm'} name="trichains" src="/profilepic.jpg" />,
       text: 'Perfil',
       link: '/trichains'
     }
