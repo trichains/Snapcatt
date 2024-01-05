@@ -58,13 +58,13 @@ const Sidebar = () => {
           to={'/'}
           as={RouterLink}
           p={2}
-          w={10}
+          w={12}
           display={{ base: 'block', md: 'none' }}
           _hover={{ bg: 'whiteAlpha.200' }}
           cursor={'pointer'}>
           <SnapurrMobileLogo />
         </Link>
-        <Flex direction={'column'} gap={5} cursor={'pointer'}>
+        <Flex direction={'column'} gap={5}>
           {sidebarItems.map((item, index) => (
             <Tooltip
               key={index}
