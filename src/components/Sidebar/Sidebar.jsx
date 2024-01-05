@@ -83,7 +83,7 @@ const Sidebar = () => {
                 _hover={{ bg: 'whiteAlpha.400' }}
                 borderRadius={6}
                 p={2}
-                w={{ base: 10, md: 'full' }}
+                w={{ base: 12, md: 'full' }}
                 justifyContent={{ base: 'center', md: 'flex-start' }}>
                 {item.icon}
                 <Box display={{ base: 'none', md: 'block' }}>{item.text}</Box>
@@ -107,7 +107,7 @@ const Sidebar = () => {
             _hover={{ bg: 'whiteAlpha.400' }}
             borderRadius={6}
             p={2}
-            w={{ base: 10, md: 'full' }}
+            w={{ base: 12, md: 'full' }}
             mt={'auto'}
             justifyContent={{ base: 'center', md: 'flex-start' }}>
             <BiLogOut size={25} />
