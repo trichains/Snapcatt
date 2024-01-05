@@ -59,7 +59,6 @@ const Sidebar = () => {
           as={RouterLink}
           p={2}
           w={10}
-          h={'full'}
           display={{ base: 'block', md: 'none' }}
           _hover={{ bg: 'whiteAlpha.200' }}
           cursor={'pointer'}>
