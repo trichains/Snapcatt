@@ -1,8 +1,8 @@
 import { Avatar, Box, Flex, Link, Tooltip } from '@chakra-ui/react';
 import { Link as RouterLink } from 'react-router-dom';
 import {
-  SnapurrMobileLogo,
-  SnapurrLogo,
+  SnapcattMobileLogo,
+  SnapcattLogo,
   SearchLogo,
   NotificationsLogo,
   CreatePostLogo
@@ -52,7 +52,7 @@ const Sidebar = () => {
           pl={2}
           display={{ base: 'none', md: 'block' }}
           cursor={'pointer'}>
-          <SnapurrLogo />
+          <SnapcattLogo />
         </Link>
         <Link
           to={'/'}
@@ -62,7 +62,7 @@ const Sidebar = () => {
           display={{ base: 'block', md: 'none' }}
           _hover={{ bg: 'whiteAlpha.200' }}
           cursor={'pointer'}>
-          <SnapurrMobileLogo />
+          <SnapcattMobileLogo />
         </Link>
         <Flex direction={'column'} gap={5}>
           {sidebarItems.map((item, index) => (

@@ -37,7 +37,7 @@ const AuthForm = () => {
         borderRadius={10}
         padding={5}>
         <VStack spacing={4}>
-          <Image src="/logo.svg" h={24} cursor={'pointer'} alt="Snapurr" />
+          <Image src="/logo.svg" h={24} cursor={'pointer'} alt="Snapcatt" />
           <Input
             placeholder="Email"
             fontSize={14}
