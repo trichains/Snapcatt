@@ -32,7 +32,7 @@ const AuthForm = () => {
     <>
       <Box
         border={'1px'}
-        borderColor={'#111'}
+        borderColor={'#222'}
         bg={'#000'}
         borderRadius={10}
         padding={5}>
@@ -68,7 +68,7 @@ const AuthForm = () => {
 
           <Button
             w={'full'}
-            colorScheme="yellow"
+            colorScheme="blue"
             size={'sm'}
             fontSize={14}
             onClick={handleAuth}>
@@ -103,11 +103,11 @@ const AuthForm = () => {
         border={'1px'}
         borderRadius={10}
         padding={5}
-        borderColor={'#111'}
+        borderColor={'#222'}
         bg={'#000'}>
         <Flex alignItems={'center'} justifyContent={'center'}>
           <Box mx={2} fontSize={14}>
-            {isLogin ? 'Não possui uma conta?' : 'Já possui uma conta?'}
+            {isLogin ? 'Não possui conta?' : 'Já possui conta?'}
           </Box>
           <Box
             onClick={() => setIsLogin(!isLogin)}

@@ -44,7 +44,7 @@ const PostFooter = ({ username }) => {
       <Text fontSize={'sm'} fontWeight={700}>
         {username}{' '}
         <Text as={'span'} fontWeight={400}>
-          ❤️❤️
+          💛💛
         </Text>
       </Text>
       <Text fontSize={'sm'} color={'gray.500'}>
@@ -69,7 +69,7 @@ const PostFooter = ({ username }) => {
               color={'blue.500'}
               fontWeight={600}
               cursor={'pointer'}
-              _hover={{ color: 'white' }}
+              _hover={{ color: 'blue.600' }}
               bg={'transparent'}>
               Publicar
             </Button>

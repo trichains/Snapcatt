@@ -20,11 +20,11 @@ const PostHeader = ({ username, avatar }) => {
       <Box cursor={'pointer'}>
         <Text
           fontSize={{ base: '10px', md: '14px' }}
-          color={'blue.500'}
+          color={'blue.400'}
           fontWeight={'bold'}
           _hover={{ color: 'red.600' }}
           transition={'.2s ease-in-out'}>
-          Deixar de seguir
+          Seguindo
         </Text>
       </Box>
     </Flex>
