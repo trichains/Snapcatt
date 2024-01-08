@@ -10,7 +10,7 @@ const PageLayout = ({ children }) => {
     <Flex>
       {/* barra lateral á esquerda */}
       {pathname !== '/auth' ? (
-        <Box w={{ base: '70px', md: '240px' }}>
+        <Box w={{ md: '240px' }}>
           <Sidebar />
         </Box>
       ) : null}

@@ -1,7 +1,6 @@
 import { Avatar, Box, Flex, Link, Tooltip } from '@chakra-ui/react';
 import { Link as RouterLink } from 'react-router-dom';
 import {
-  SnapcattMobileLogo,
   SnapcattLogo,
   SearchLogo,
   NotificationsLogo,
@@ -21,9 +20,11 @@ const Sidebar = () => {
       icon: <SearchLogo />,
       text: 'Pesquisar'
     },
+    // Remover a entrada para notificações em dispositivos móveis
     {
       icon: <NotificationsLogo />,
-      text: 'Notificações'
+      text: 'Notificações',
+      hideOnMobile: true // Adiciona essa propriedade para identificar que deve ser oculto em dispositivos móveis
     },
     {
       icon: <CreatePostLogo />,
@@ -35,17 +36,28 @@ const Sidebar = () => {
       link: '/trichains'
     }
   ];
+
   return (
     <Box
-      height={'100vh'}
-      borderRight={'1px solid'}
-      borderColor={'whiteAlpha.300'}
-      py={8}
-      position={'sticky'}
-      top={0}
+      bg={'black'}
+      height={{ md: '100vh' }}
+      w={{ base: '100%' }}
+      borderTop={{ base: '1px solid', md: 'none' }}
+      borderRight={{ base: 'none', md: '1px solid' }}
+      borderColor={{ base: 'whiteAlpha.300', md: 'whiteAlpha.300' }}
+      px={{ base: 4, md: 4 }}
+      py={{ base: 2, md: 8 }}
+      position={{ base: 'fixed', md: 'sticky' }}
+      top={{ md: 0 }}
+      bottom={0}
       left={0}
-      px={{ base: 2, md: 4 }}>
-      <Flex direction={'column'} gap={10} w={'full'} h={'full'}>
+      zIndex={{ base: 99 }}>
+      <Flex
+        justify={{ base: 'center' }}
+        alignItems={{ base: 'center' }}
+        direction={{ base: 'row', md: 'column' }}
+        gap={{ base: 2, md: 10 }}
+        h={{ md: 'full' }}>
         <Link
           to={'/'}
           as={RouterLink}
@@ -54,61 +66,61 @@ const Sidebar = () => {
           cursor={'pointer'}>
           <SnapcattLogo />
         </Link>
-        <Link
-          to={'/'}
-          as={RouterLink}
-          p={2}
-          w={12}
-          display={{ base: 'block', md: 'none' }}
-          _hover={{ bg: 'whiteAlpha.200' }}
-          cursor={'pointer'}>
-          <SnapcattMobileLogo />
-        </Link>
-        <Flex direction={'column'} gap={5}>
-          {sidebarItems.map((item, index) => (
-            <Tooltip
-              key={index}
-              hasArrow
-              label={item.text}
-              placement="right"
-              ml={1}
-              openDelay={500}
-              display={{ base: 'block', md: 'none' }}>
-              <Link
-                display={'flex'}
-                to={item.link || null}
-                as={RouterLink}
-                alignItems={'center'}
-                gap={4}
-                _hover={{ bg: 'whiteAlpha.400' }}
-                borderRadius={6}
-                p={2}
-                w={{ base: 12, md: 'full' }}
-                justifyContent={{ base: 'center', md: 'flex-start' }}>
-                {item.icon}
-                <Box display={{ base: 'none', md: 'block' }}>{item.text}</Box>
-              </Link>
-            </Tooltip>
-          ))}
+        <Flex
+          direction={{ base: 'row', md: 'column' }}
+          gap={{ base: 4, md: 5 }}
+          w={{ md: 'full' }}>
+          {sidebarItems.map(
+            (item, index) =>
+              !item.hideOnMobile && ( // Adiciona essa condição para não renderizar em dispositivos móveis
+                <Tooltip
+                  key={index}
+                  hasArrow
+                  label={item.text}
+                  placement={{ base: 'top', md: 'right' }}
+                  ml={{ md: 1 }}
+                  openDelay={500}
+                  display={{ base: 'block', md: 'none' }}>
+                  <Link
+                    display={'flex'}
+                    to={item.link || null}
+                    as={RouterLink}
+                    alignItems={'center'}
+                    gap={{ base: 2, md: 4 }}
+                    _hover={{ bg: 'whiteAlpha.400' }}
+                    borderRadius={6}
+                    p={2}
+                    w={{ base: 10, md: 'full' }}
+                    h={{ base: 10 }}
+                    justifyContent={{ base: 'center', md: 'flex-start' }}>
+                    {item.icon}
+                    <Box display={{ base: 'none', md: 'block' }}>
+                      {item.text}
+                    </Box>
+                  </Link>
+                </Tooltip>
+              )
+          )}
         </Flex>
         <Tooltip
           hasArrow
           label={'Sair'}
-          placement="right"
+          placement={{ base: 'top', md: 'right' }}
           ml={1}
           openDelay={500}
           display={{ base: 'block', md: 'none' }}>
           <Link
+            ml={{ base: 2 }}
             display={'flex'}
             to={'/auth'}
             as={RouterLink}
             alignItems={'center'}
             gap={4}
             _hover={{ bg: 'whiteAlpha.400' }}
+            w={{ md: 'full' }}
             borderRadius={6}
-            p={2}
-            w={{ base: 12, md: 'full' }}
-            mt={'auto'}
+            p={{ base: 1, md: 2 }}
+            mt={{ md: 'auto' }}
             justifyContent={{ base: 'center', md: 'flex-start' }}>
             <BiLogOut size={25} />
             <Box display={{ base: 'none', md: 'block' }}>Sair</Box>
