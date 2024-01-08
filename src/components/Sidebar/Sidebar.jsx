@@ -22,7 +22,6 @@ const SidebarItem = ({ icon, text, link, showOnMobile = true }) => {
   return (
     <Tooltip
       hasArrow
-      label={text}
       placement={'top'}
       ml={{ base: 0, md: 1 }}
       openDelay={500}
