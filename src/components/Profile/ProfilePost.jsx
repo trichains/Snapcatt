@@ -123,7 +123,7 @@ const ProfilePost = ({ img }) => {
                   gap={4}
                   w={'full'}
                   alignItems={'flex-start'}
-                  maxH={{ base: '25vh', md: '350px' }}
+                  maxH={{ base: '150px', md: '350px' }}
                   overflowY={'auto'}>
                   <Comment
                     createdAt={'12h atrás'}
