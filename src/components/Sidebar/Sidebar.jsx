@@ -26,7 +26,7 @@ const SidebarItem = ({ icon, text, link, showOnMobile = true }) => {
       placement={'top'}
       ml={{ base: 0, md: 1 }}
       openDelay={500}
-      display={{ base: 'block', md: 'none' }}>
+      display={'none'}>
       <Link
         as={link ? RouterLink : 'div'}
         to={link}
@@ -59,7 +59,7 @@ const Sidebar = () => {
   const sidebarItems = [
     {
       icon: <AiFillHome size={25} />,
-      text: 'Inicio',
+      text: 'Início',
       link: '/'
     },
     {
