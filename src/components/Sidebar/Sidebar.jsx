@@ -23,7 +23,7 @@ const SidebarItem = ({ icon, text, link, showOnMobile = true }) => {
     <Tooltip
       hasArrow
       label={text}
-      placement={{ base: 'top', md: 'right' }}
+      placement={'top'}
       ml={{ base: 0, md: 1 }}
       openDelay={500}
       display={{ base: 'flex', md: 'none' }}>
@@ -130,7 +130,7 @@ const Sidebar = () => {
         <Tooltip
           hasArrow
           label={'Sair'}
-          placement={{ base: 'top', md: 'right' }}
+          placement={'top'}
           ml={1}
           openDelay={500}
           display={{ base: 'block', md: 'none' }}>
