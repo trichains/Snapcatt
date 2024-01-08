@@ -82,7 +82,7 @@ const ProfilePost = ({ img }) => {
             <Flex
               direction={{ base: 'column', md: 'row' }}
               gap={{ base: 0, md: 4 }}
-              w={{ base: '90%', sm: '70%', md: 'full' }}
+              w={{ base: 'full', sm: '70%', md: 'full' }}
               mx={'auto'}>
               <Box
                 borderRadius={4}
@@ -98,8 +98,7 @@ const ProfilePost = ({ img }) => {
                 flexDir={'column'}
                 px={{ base: 0, md: 10 }}
                 mt={{ base: 2, md: 0 }}
-                display={'flex'}
-                flexDirection={'column'}>
+                display={'flex'}>
                 <Flex alignItems={'center'} justifyContent={'space-between'}>
                   <Flex alignItems={'center'} gap={4}>
                     <Avatar
@@ -124,7 +123,7 @@ const ProfilePost = ({ img }) => {
                   gap={4}
                   w={'full'}
                   alignItems={'flex-start'}
-                  maxH={{ base: '170px', md: '350px' }}
+                  maxH={{ base: '25vh', md: '350px' }}
                   overflowY={'auto'}>
                   <Comment
                     createdAt={'12h atrás'}
