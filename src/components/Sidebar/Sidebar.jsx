@@ -1,13 +1,59 @@
-import { Avatar, Box, Flex, Link, Tooltip } from '@chakra-ui/react';
+import {
+  Avatar,
+  Box,
+  Flex,
+  Link,
+  Tooltip,
+  useMediaQuery
+} from '@chakra-ui/react';
 import { Link as RouterLink } from 'react-router-dom';
+import { AiFillHome } from 'react-icons/ai';
+import { BiLogOut } from 'react-icons/bi';
 import {
   SnapcattLogo,
   SearchLogo,
   NotificationsLogo,
+  ReelsLogo,
   CreatePostLogo
 } from '../../assets/constants';
-import { AiFillHome } from 'react-icons/ai';
-import { BiLogOut } from 'react-icons/bi';
+
+const SidebarItem = ({ icon, text, link, showOnMobile = true }) => {
+  const [isMobile] = useMediaQuery('(max-width: 48em)');
+  return (
+    <Tooltip
+      hasArrow
+      label={text}
+      placement={{ base: 'top', md: 'right' }}
+      ml={{ base: 0, md: 1 }}
+      openDelay={500}
+      display={{ base: 'flex', md: 'none' }}>
+      <Link
+        as={link ? RouterLink : 'div'}
+        to={link}
+        display={{
+          base: isMobile && !showOnMobile ? 'none' : 'flex',
+          md: 'flex'
+        }}
+        alignItems={'center'}
+        gap={{ base: 2, md: 4 }}
+        _hover={{ bg: 'whiteAlpha.400' }}
+        borderRadius={6}
+        p={2}
+        w={{ base: 10, md: 'full' }}
+        h={{ base: 10 }}
+        justifyContent={{ base: 'center', md: 'flex-start' }}>
+        {icon}
+        <Box
+          display={{
+            base: isMobile && !showOnMobile ? 'block' : 'none',
+            md: 'block'
+          }}>
+          {text}
+        </Box>
+      </Link>
+    </Tooltip>
+  );
+};
 
 const Sidebar = () => {
   const sidebarItems = [
@@ -20,11 +66,14 @@ const Sidebar = () => {
       icon: <SearchLogo />,
       text: 'Pesquisar'
     },
-    // Remover a entrada para notificações em dispositivos móveis
     {
       icon: <NotificationsLogo />,
       text: 'Notificações',
-      hideOnMobile: true // Adiciona essa propriedade para identificar que deve ser oculto em dispositivos móveis
+      showOnMobile: false
+    },
+    {
+      icon: <ReelsLogo />,
+      text: 'Catios'
     },
     {
       icon: <CreatePostLogo />,
@@ -68,39 +117,15 @@ const Sidebar = () => {
         </Link>
         <Flex
           direction={{ base: 'row', md: 'column' }}
-          gap={{ base: 4, md: 5 }}
-          w={{ md: 'full' }}>
-          {sidebarItems.map(
-            (item, index) =>
-              !item.hideOnMobile && ( // Adiciona essa condição para não renderizar em dispositivos móveis
-                <Tooltip
-                  key={index}
-                  hasArrow
-                  label={item.text}
-                  placement={{ base: 'top', md: 'right' }}
-                  ml={{ md: 1 }}
-                  openDelay={500}
-                  display={{ base: 'block', md: 'none' }}>
-                  <Link
-                    display={'flex'}
-                    to={item.link || null}
-                    as={RouterLink}
-                    alignItems={'center'}
-                    gap={{ base: 2, md: 4 }}
-                    _hover={{ bg: 'whiteAlpha.400' }}
-                    borderRadius={6}
-                    p={2}
-                    w={{ base: 10, md: 'full' }}
-                    h={{ base: 10 }}
-                    justifyContent={{ base: 'center', md: 'flex-start' }}>
-                    {item.icon}
-                    <Box display={{ base: 'none', md: 'block' }}>
-                      {item.text}
-                    </Box>
-                  </Link>
-                </Tooltip>
-              )
-          )}
+          alignItems={{ base: 'center', md: 'flex-start' }}
+          gap={5}
+          borderRadius={6}
+          p={2}
+          w={{ base: 10, md: 'full' }}
+          justifyContent={{ base: 'center', md: 'flex-start' }}>
+          {sidebarItems.map((item, index) => (
+            <SidebarItem key={index} {...item} />
+          ))}
         </Flex>
         <Tooltip
           hasArrow
@@ -111,7 +136,7 @@ const Sidebar = () => {
           display={{ base: 'block', md: 'none' }}>
           <Link
             ml={{ base: 2 }}
-            display={'flex'}
+            display={{ base: 'none', md: 'flex' }}
             to={'/auth'}
             as={RouterLink}
             alignItems={'center'}
