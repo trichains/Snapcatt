@@ -28,7 +28,7 @@ const PostFooter = ({ username, isProfilePage }) => {
     }
   };
   return (
-    <Box mb={10} mt={'auto'}>
+    <Box mb={{ base: 5, md: 10 }} mt={'auto'}>
       <Flex alignItems={'center'} gap={4} w={'full'} pt={0} mb={2} mt={4}>
         <Box onClick={handleLike} cursor={'pointer'} fontSize={18}>
           {!liked ? <NotificationsLogo /> : <UnlikeLogo />}
@@ -67,7 +67,7 @@ const PostFooter = ({ username, isProfilePage }) => {
             fontSize={14}
             pr={{ base: 12, md: 'auto' }}
           />
-          <InputRightElement width={{ base: 12, md: 'auto' }}>
+          <InputRightElement width={{ base: 14, md: 'auto' }}>
             <Button
               fontSize={14}
               color={'blue.500'}

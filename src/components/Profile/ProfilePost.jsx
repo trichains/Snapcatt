@@ -81,7 +81,7 @@ const ProfilePost = ({ img }) => {
           <ModalBody bg={'black'} pb={5}>
             <Flex
               direction={{ base: 'column', md: 'row' }}
-              gap="4"
+              gap={{ base: 0, md: 4 }}
               w={{ base: '90%', sm: '70%', md: 'full' }}
               mx={'auto'}>
               <Box
@@ -97,9 +97,9 @@ const ProfilePost = ({ img }) => {
                 flex={1}
                 flexDir={'column'}
                 px={{ base: 0, md: 10 }}
-                mt={{ base: 4, md: 0 }}
+                mt={{ base: 2, md: 0 }}
                 display={'flex'}
-                flexDirection={'column-reverse'}>
+                flexDirection={'column'}>
                 <Flex alignItems={'center'} justifyContent={'space-between'}>
                   <Flex alignItems={'center'} gap={4}>
                     <Avatar
@@ -119,12 +119,12 @@ const ProfilePost = ({ img }) => {
                     <MdDelete size={20} cursor={'pointer'}></MdDelete>
                   </Box>
                 </Flex>
-                <Divider my={{ base: 0, md: 4 }} bg={'gray.500'} />
+                <Divider my={{ base: 2, md: 4 }} bg={'gray.500'} />
                 <VStack
                   gap={4}
                   w={'full'}
                   alignItems={'flex-start'}
-                  maxH={'350px'}
+                  maxH={{ base: '170px', md: '350px' }}
                   overflowY={'auto'}>
                   <Comment
                     createdAt={'12h atrás'}
@@ -137,6 +137,20 @@ const ProfilePost = ({ img }) => {
                     username="blabla"
                     profilePic="/img2.jpg"
                     text={'quero bolo'}
+                  />
+                  <Comment
+                    createdAt={'1d atrás'}
+                    username="gato"
+                    profilePic="/img3.jpg"
+                    text={'sou lindo'}
+                  />
+                  <Comment
+                    createdAt={'1d atrás'}
+                    username="gato"
+                    profilePic="/img3.jpg"
+                    text={
+                      'adsasdiasdijadsijdsjiads sjidjasjiasjiadsj idasaadsasddasasdasdsdjidasiadjsjiadsajisdijsdjisdijadsijdsijadjisjiadsiasd'
+                    }
                   />
                   <Comment
                     createdAt={'1d atrás'}
