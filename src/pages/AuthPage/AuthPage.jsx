@@ -19,7 +19,9 @@ const AuthPage = () => {
           {/* Lado direito */}
           <VStack spacing={4} align={'stretch'}>
             <AuthForm />
-            <Box textAlign={'center'}>Desenvolvido por trichains</Box>
+            <Box fontSize={14} textAlign={'center'}>
+              Desenvolvido por trichains
+            </Box>
             <Flex gap={5} justifyContent={'center'}>
               <Image src="/github.svg" h={30} alt="GitHub logo" />
               <Image src="/portfolio.svg" h={30} alt="Portfolio logo" />

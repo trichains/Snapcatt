@@ -45,6 +45,7 @@ const AuthForm = () => {
             autoComplete="email"
             value={inputs.email}
             onChange={(e) => setInputs({ ...inputs, email: e.target.value })}
+            _placeholder={{ color: 'whiteAlpha.600' }}
           />
           <Input
             placeholder="Senha"
@@ -52,6 +53,7 @@ const AuthForm = () => {
             type="password"
             value={inputs.password}
             onChange={(e) => setInputs({ ...inputs, password: e.target.value })}
+            _placeholder={{ color: 'whiteAlpha.600' }}
           />
 
           {!isLogin ? (
@@ -63,6 +65,7 @@ const AuthForm = () => {
               }
               fontSize={14}
               type="password"
+              _placeholder={{ color: 'whiteAlpha.600' }}
             />
           ) : null}
 
@@ -83,9 +86,7 @@ const AuthForm = () => {
             gap={1}
             w={'full'}>
             <Box flex={2} h={'1px'} bg={'gray.400'} />
-            <Text mx={1} color={'white'}>
-              OU
-            </Text>
+            <Text mx={1}>OU</Text>
             <Box flex={2} h={'1px'} bg={'gray.400'} />
           </Flex>
           <Flex

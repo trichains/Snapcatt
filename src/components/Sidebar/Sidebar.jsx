@@ -26,7 +26,7 @@ const SidebarItem = ({ icon, text, link, showOnMobile = true }) => {
       placement={'top'}
       ml={{ base: 0, md: 1 }}
       openDelay={500}
-      display={{ base: 'flex', md: 'none' }}>
+      display={{ base: 'block', md: 'none' }}>
       <Link
         as={link ? RouterLink : 'div'}
         to={link}
@@ -130,7 +130,7 @@ const Sidebar = () => {
         <Tooltip
           hasArrow
           label={'Sair'}
-          placement={'top'}
+          placement={'right'}
           ml={1}
           openDelay={500}
           display={{ base: 'block', md: 'none' }}>
