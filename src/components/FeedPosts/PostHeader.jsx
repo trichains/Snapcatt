@@ -9,17 +9,14 @@ const PostHeader = ({ username, avatar }) => {
       my={2}>
       <Flex align={'center'} gap={2}>
         <Avatar src={avatar} alt="Foto de Usuário" size={'sm'} />
-        <Flex
-          fontSize={{ base: '10px', md: '14px' }}
-          fontWeight={'bold'}
-          gap={2}>
+        <Flex fontSize={14} fontWeight={'bold'} gap={2}>
           {username}
           <Box color={'gray.500'}>• 1h</Box>
         </Flex>
       </Flex>
       <Box cursor={'pointer'}>
         <Text
-          fontSize={{ base: '10px', md: '14px' }}
+          fontSize={14}
           color={'blue.400'}
           fontWeight={'bold'}
           _hover={{ color: 'red.600' }}

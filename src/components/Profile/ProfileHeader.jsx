@@ -36,7 +36,6 @@ const ProfileHeader = () => {
           <Flex gap={5} alignItems={'center'} justifyContent={'center'}>
             <Button
               size={{ base: 'xs', md: 'sm' }}
-              p={4}
               bg={'white'}
               color={'black'}
               cursor={'pointer'}
@@ -45,6 +44,7 @@ const ProfileHeader = () => {
             </Button>
             <Link
               alignItems={'center'}
+              fontSize={'sm'}
               justifyContent={'center'}
               display={{ base: 'flex', md: 'none' }}
               to={'/auth'}
@@ -60,7 +60,7 @@ const ProfileHeader = () => {
         </Flex>
 
         <Flex alignItems={'center'} gap={{ base: 2, sm: 4 }}>
-          <Text fontSize={'sm'}>
+          <Text fontSize={{ base: 'xs', md: 'sm' }}>
             <Text as={'span'} fontWeight={'bold'} mr={1}>
               4
             </Text>

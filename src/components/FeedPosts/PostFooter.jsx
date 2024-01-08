@@ -60,12 +60,12 @@ const PostFooter = ({ username }) => {
           <Input
             variant={'flushed'}
             placeholder="Adicione um comentário..."
-            fontSize={{ base: '12px', md: '14px' }}
+            fontSize={14}
             pr={{ base: 12, md: 'auto' }}
           />
           <InputRightElement width={{ base: 12, md: 'auto' }}>
             <Button
-              fontSize={{ base: '12px', md: '14px' }}
+              fontSize={14}
               color={'blue.500'}
               fontWeight={600}
               cursor={'pointer'}

@@ -18,7 +18,7 @@ const ProfileTabs = () => {
         <Box fontSize={20}>
           <BsGrid3X3 />
         </Box>
-        <Text fontSize={12} display={{ base: 'none', sm: 'block' }}>
+        <Text fontSize={14} display={{ base: 'none', sm: 'block' }}>
           Postagens
         </Text>
       </Flex>
@@ -27,7 +27,7 @@ const ProfileTabs = () => {
         <Box fontSize={20}>
           <BsBookmark />
         </Box>
-        <Text fontSize={12} display={{ base: 'none', sm: 'block' }}>
+        <Text fontSize={14} display={{ base: 'none', sm: 'block' }}>
           Salvos
         </Text>
       </Flex>
@@ -36,7 +36,7 @@ const ProfileTabs = () => {
         <Box fontSize={20}>
           <BsSuitHeart fontWeight={'bold'} />
         </Box>
-        <Text fontSize={12} display={{ base: 'none', sm: 'block' }}>
+        <Text fontSize={14} display={{ base: 'none', sm: 'block' }}>
           Curtidos
         </Text>
       </Flex>

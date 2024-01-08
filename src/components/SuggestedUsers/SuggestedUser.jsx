@@ -12,7 +12,7 @@ const SuggestedUser = ({ name, followers, avatar }) => {
           <Box fontSize={14} fontWeight={'bold'}>
             {name}
           </Box>
-          <Box fontSize={12} color={'gray.500'}>
+          <Box fontSize={14} color={'gray.500'}>
             {followers} seguidores
           </Box>
         </VStack>
