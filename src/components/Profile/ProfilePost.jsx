@@ -22,6 +22,7 @@ import PostFooter from '../FeedPosts/PostFooter';
 
 const ProfilePost = ({ img }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+
   return (
     <>
       <GridItem
@@ -79,6 +80,7 @@ const ProfilePost = ({ img }) => {
           <ModalCloseButton />
           <ModalBody bg={'black'} pb={5}>
             <Flex
+              direction={{ base: 'column', md: 'row' }}
               gap="4"
               w={{ base: '90%', sm: '70%', md: 'full' }}
               mx={'auto'}>
@@ -87,15 +89,17 @@ const ProfilePost = ({ img }) => {
                 overflow={'hidden'}
                 border={'1px solid'}
                 borderColor={'whiteAlpha.300'}
-                flex={1.5}>
+                flex={{ base: 1, md: 1.5 }}>
                 <Image src={img} alt="Postagens do perfil" />
               </Box>
               {/* Seção de comentarios */}
               <Flex
                 flex={1}
                 flexDir={'column'}
-                px={10}
-                display={{ base: 'none', md: 'flex' }}>
+                px={{ base: 0, md: 10 }}
+                mt={{ base: 4, md: 0 }}
+                display={'flex'}
+                flexDirection={'column-reverse'}>
                 <Flex alignItems={'center'} justifyContent={'space-between'}>
                   <Flex alignItems={'center'} gap={4}>
                     <Avatar
@@ -115,7 +119,7 @@ const ProfilePost = ({ img }) => {
                     <MdDelete size={20} cursor={'pointer'}></MdDelete>
                   </Box>
                 </Flex>
-                <Divider my={4} bg={'gray.500'} />
+                <Divider my={{ base: 0, md: 4 }} bg={'gray.500'} />
                 <VStack
                   gap={4}
                   w={'full'}
@@ -141,7 +145,7 @@ const ProfilePost = ({ img }) => {
                     text={'sou lindo'}
                   />
                 </VStack>
-                <Divider my={4} bg={'gray.580'} />
+                <Divider my={{ base: 0, md: 4 }} bg={'gray.580'} />
                 <PostFooter isProfilePage={true} />
               </Flex>
             </Flex>
