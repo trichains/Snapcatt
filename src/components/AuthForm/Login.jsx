@@ -1,10 +1,15 @@
-import { Button, Input } from '@chakra-ui/react';
+import { Alert, AlertIcon, Button, Input } from '@chakra-ui/react';
 import { useState } from 'react';
+import useLogin from '../../hooks/useLogin';
+
+import firebaseErrors from '../../../firebaseErrors';
+
 const Login = () => {
   const [inputs, setInputs] = useState({
     email: '',
     password: ''
   });
+  const { loading, error, login } = useLogin();
   return (
     <>
       <Input
@@ -26,7 +31,19 @@ const Login = () => {
         onChange={(e) => setInputs({ ...inputs, password: e.target.value })}
         _placeholder={{ color: 'whiteAlpha.600' }}
       />
-      <Button w={'full'} colorScheme="blue" size={'sm'} fontSize={14}>
+      {error && (
+        <Alert status="error" fontSize={14} p={2} borderRadius={5}>
+          <AlertIcon fontSize={18} />
+          {firebaseErrors[error.code]}
+        </Alert>
+      )}
+      <Button
+        w={'full'}
+        colorScheme="blue"
+        size={'sm'}
+        fontSize={14}
+        isLoading={loading}
+        onClick={() => login(inputs)}>
         Entrar
       </Button>
     </>
