@@ -1,32 +1,12 @@
-import {
-  Box,
-  Button,
-  Flex,
-  Image,
-  Input,
-  Text,
-  VStack
-} from '@chakra-ui/react';
+import { Box, Flex, Image, Text, VStack } from '@chakra-ui/react';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+
+import Login from './Login';
+import Register from './Register';
+import GoogleAuth from './GoogleAuth';
 
 const AuthForm = () => {
   const [isLogin, setIsLogin] = useState(true);
-  const navigate = useNavigate();
-  const [inputs, setInputs] = useState({
-    email: '',
-    password: '',
-    confirmPassword: ''
-  });
-
-  const handleAuth = () => {
-    if (!inputs.email || !inputs.password) {
-      alert('Por favor, preencha todos os campos');
-      return;
-    }
-
-    navigate('/');
-  };
 
   return (
     <>
@@ -38,45 +18,8 @@ const AuthForm = () => {
         padding={5}>
         <VStack spacing={4}>
           <Image src="/logo.svg" h={24} cursor={'pointer'} alt="Snapcatt" />
-          <Input
-            placeholder="Email"
-            fontSize={14}
-            type="email"
-            autoComplete="email"
-            value={inputs.email}
-            onChange={(e) => setInputs({ ...inputs, email: e.target.value })}
-            _placeholder={{ color: 'whiteAlpha.600' }}
-          />
-          <Input
-            placeholder="Senha"
-            fontSize={14}
-            type="password"
-            value={inputs.password}
-            onChange={(e) => setInputs({ ...inputs, password: e.target.value })}
-            _placeholder={{ color: 'whiteAlpha.600' }}
-          />
 
-          {!isLogin ? (
-            <Input
-              placeholder="Confirmar Senha"
-              value={inputs.confirmPassword}
-              onChange={(e) =>
-                setInputs({ ...inputs, confirmPassword: e.target.value })
-              }
-              fontSize={14}
-              type="password"
-              _placeholder={{ color: 'whiteAlpha.600' }}
-            />
-          ) : null}
-
-          <Button
-            w={'full'}
-            colorScheme="blue"
-            size={'sm'}
-            fontSize={14}
-            onClick={handleAuth}>
-            {isLogin ? 'Entrar' : 'Cadastrar'}
-          </Button>
+          {isLogin ? <Login /> : <Register />}
 
           {/* ------ OU ------*/}
           <Flex
@@ -89,15 +32,7 @@ const AuthForm = () => {
             <Text mx={1}>OU</Text>
             <Box flex={2} h={'1px'} bg={'gray.400'} />
           </Flex>
-          <Flex
-            alignItems={'center'}
-            justifyContent={'center'}
-            cursor={'pointer'}>
-            <Image src="/google.svg" w={5} alt="Google logo" />
-            <Text mx={2} color={'blue.300'}>
-              Entrar com Google
-            </Text>
-          </Flex>
+          <GoogleAuth />
         </VStack>
       </Box>
       <Box
