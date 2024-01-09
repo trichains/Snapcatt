@@ -94,6 +94,7 @@ const ProfilePost = ({ img }) => {
               </Box>
               {/* Seção de comentarios */}
               <Flex
+                mt={{ base: 2, md: 0 }}
                 flex={1}
                 flexDir={'column'}
                 px={{ base: 0, md: 10 }}
@@ -119,10 +120,9 @@ const ProfilePost = ({ img }) => {
                 </Flex>
                 <Divider my={{ base: 2, md: 4 }} bg={'gray.500'} />
                 <VStack
-                  gap={4}
                   w={'full'}
                   alignItems={'start'}
-                  maxH={{ base: '150px', md: '300px' }}
+                  maxH={{ base: '150px', md: '350px' }}
                   overflowY={'auto'}>
                   <Comment
                     createdAt={'12h atrás'}
@@ -146,6 +146,15 @@ const ProfilePost = ({ img }) => {
                     profilePic="/img3.jpg"
                     text={'sou lindo'}
                     characterLimit={70}
+                  />
+                  <Comment
+                    createdAt={'1d atrás'}
+                    username="gato"
+                    profilePic="/img3.jpg"
+                    characterLimit={70}
+                    text={
+                      'KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK'
+                    }
                   />
                   <Comment
                     createdAt={'1d atrás'}
