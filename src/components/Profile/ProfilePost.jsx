@@ -133,14 +133,16 @@ const ProfilePost = ({ img }) => {
                   />
                   <Comment
                     createdAt={'3h atrás'}
-                    username="blabla"
+                    username="blablagatogatogatogatogatogatogato"
                     profilePic="/img2.jpg"
                     text={'quero bolo'}
+                    usernameLimit={15}
                     characterLimit={70}
                   />
                   <Comment
                     createdAt={'1d atrás'}
-                    username="gato"
+                    username="cristhian.almeida"
+                    usernameLimit={15}
                     profilePic="/img3.jpg"
                     text={'sou lindo'}
                     characterLimit={70}

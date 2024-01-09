@@ -1,9 +1,20 @@
 import { useState } from 'react';
 import { Avatar, Flex, Text, Button } from '@chakra-ui/react';
 
-const Comment = ({ createdAt, username, profilePic, text, characterLimit }) => {
+const Comment = ({
+  createdAt,
+  username,
+  profilePic,
+  text,
+  characterLimit,
+  usernameLimit
+}) => {
   const [showFullComment, setShowFullComment] = useState(false);
 
+  const displayUsername =
+    username.length > usernameLimit
+      ? `${username.slice(0, usernameLimit)}...`
+      : username;
   const displayText = showFullComment ? text : text.slice(0, characterLimit);
 
   const handleToggleComment = () => {
@@ -12,11 +23,11 @@ const Comment = ({ createdAt, username, profilePic, text, characterLimit }) => {
 
   return (
     <Flex maxW={{ base: '65vw', md: '20vw' }} gap={4}>
-      <Avatar src={profilePic} name={username} size={'sm'} />
+      <Avatar src={profilePic} name={displayUsername} size={'sm'} />
       <Flex w={'full'} direction={'column'}>
         <Flex alignItems={'center'} gap={2}>
           <Text fontWeight={'bold'} fontSize={14}>
-            {username}
+            {displayUsername}
           </Text>
           <Text fontSize={12} color={'gray'}>
             {createdAt}
