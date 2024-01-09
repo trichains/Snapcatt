@@ -97,7 +97,6 @@ const ProfilePost = ({ img }) => {
                 flex={1}
                 flexDir={'column'}
                 px={{ base: 0, md: 10 }}
-                mt={{ base: 2, md: 0 }}
                 display={'flex'}>
                 <Flex alignItems={'center'} justifyContent={'space-between'}>
                   <Flex alignItems={'center'} gap={4}>
@@ -122,40 +121,47 @@ const ProfilePost = ({ img }) => {
                 <VStack
                   gap={4}
                   w={'full'}
-                  alignItems={'flex-start'}
-                  maxH={{ base: '150px', md: '350px' }}
+                  alignItems={'start'}
+                  maxH={{ base: '150px', md: '300px' }}
                   overflowY={'auto'}>
                   <Comment
                     createdAt={'12h atrás'}
                     username="anabanana"
                     profilePic="/img1.jpg"
                     text={'gato fei kkkkkkkkkk'}
+                    characterLimit={70}
                   />
                   <Comment
                     createdAt={'3h atrás'}
                     username="blabla"
                     profilePic="/img2.jpg"
                     text={'quero bolo'}
+                    characterLimit={70}
                   />
                   <Comment
                     createdAt={'1d atrás'}
                     username="gato"
                     profilePic="/img3.jpg"
                     text={'sou lindo'}
+                    characterLimit={70}
                   />
                   <Comment
                     createdAt={'1d atrás'}
                     username="gato"
                     profilePic="/img3.jpg"
+                    characterLimit={70}
                     text={
-                      'adsasdiasdijadsijdsjiads sjidjasjiasjiadsj idasaadsasddasasdasdsdjidasiadjsjiadsajisdijsdjisdijadsijdsijadjisjiadsiasd'
+                      'KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK'
                     }
                   />
                   <Comment
                     createdAt={'1d atrás'}
                     username="gato"
                     profilePic="/img3.jpg"
-                    text={'sou lindo'}
+                    characterLimit={70}
+                    text={
+                      'adsasdiasdijadsijdsjiads sjidjasjiasjiadsj idasaadsasddasasdasdsdjidasiadjsjiadsajisdijsdjisdijadsijdsijadjisjiadsiasd'
+                    }
                   />
                 </VStack>
                 <Divider my={{ base: 0, md: 4 }} bg={'gray.580'} />

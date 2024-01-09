@@ -64,8 +64,9 @@ const PostFooter = ({ username, isProfilePage }) => {
           <Input
             variant={'flushed'}
             placeholder="Adicione um comentário..."
+            _placeholder={{ color: 'whiteAlpha.500' }}
             fontSize={14}
-            pr={{ base: 12, md: 'auto' }}
+            pr={{ base: 16, md: 20 }}
           />
           <InputRightElement width={{ base: 14, md: 'auto' }}>
             <Button
