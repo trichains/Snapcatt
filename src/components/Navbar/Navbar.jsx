@@ -17,12 +17,12 @@ const Navbar = () => {
         />
         <Flex gap={4}>
           <Link to={'/auth'}>
-            <Button colorScheme="teal" size={'sm'}>
+            <Button variant="outline" size={'sm'}>
               Entrar
             </Button>
           </Link>
           <Link to={'/auth'}>
-            <Button variant="outline" size={'sm'}>
+            <Button colorScheme="yellow" size={'sm'}>
               Cadastrar
             </Button>
           </Link>
