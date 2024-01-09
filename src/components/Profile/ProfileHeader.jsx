@@ -1,17 +1,17 @@
 import {
   Avatar,
   AvatarGroup,
-  Box,
   Button,
   Flex,
-  Link,
   Text,
   VStack
 } from '@chakra-ui/react';
-import { Link as RouterLink } from 'react-router-dom';
 import { BiLogOut } from 'react-icons/bi';
+import useLogout from '../../hooks/useLogout';
 
 const ProfileHeader = () => {
+  const { handleLogout, isLoggingOut } = useLogout();
+
   return (
     <Flex
       gap={{ base: 4, sm: 10 }}
@@ -33,29 +33,33 @@ const ProfileHeader = () => {
           w={'full'}>
           <Text fontSize={'lg'}>trichains</Text>
 
-          <Flex gap={5} alignItems={'center'} justifyContent={'center'}>
+          <Flex gap={5} mb={2} alignItems={'center'} justifyContent={'center'}>
             <Button
-              size={{ base: 'xs', md: 'sm' }}
-              bg={'white'}
-              color={'black'}
+              size={'sm'}
+              colorScheme="gray"
+              variant={'outline'}
               cursor={'pointer'}
-              _hover={{ bg: 'whiteAlpha.800' }}>
+              _hover={{ bg: 'whiteAlpha.300' }}>
               Editar perfil
             </Button>
-            <Link
+            <Flex
+              onClick={handleLogout}
+              display={{ base: 'flex', md: 'none' }}
+              position={'relative'}
               alignItems={'center'}
               fontSize={'sm'}
-              justifyContent={'center'}
-              display={{ base: 'flex', md: 'none' }}
-              to={'/auth'}
-              as={RouterLink}
-              gap={4}
-              _hover={{ bg: 'whiteAlpha.400' }}
-              borderRadius={6}
-              p={'1'}>
-              <BiLogOut size={20} />
-              <Box display={'block'}>Sair</Box>
-            </Link>
+              _hover={{ bg: 'red.600' }}
+              borderRadius={6}>
+              <BiLogOut style={{ position: 'absolute', left: 10 }} size={20} />
+              <Button
+                size={'sm'}
+                pl={10}
+                variant={'outline'}
+                _hover={{ bg: 'transparent' }}
+                isLoading={isLoggingOut}>
+                Sair
+              </Button>
+            </Flex>
           </Flex>
         </Flex>
 

@@ -4,13 +4,13 @@ import { getFirestore } from 'firebase/firestore';
 import { getStorage } from 'firebase/storage';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyDZcynKelWlnF0IfOqrutgSLPafUgDqkJo',
-  authDomain: 'snapcatt-api.firebaseapp.com',
-  projectId: 'snapcatt-api',
-  storageBucket: 'snapcatt-api.appspot.com',
-  messagingSenderId: '1065327948443',
-  appId: '1:1065327948443:web:29cc696b67cb06a1708c3e',
-  measurementId: 'G-HB8PW70SH9'
+  apiKey: 'AIzaSyAZQZOKXpH7VCUAcBhPqiVTNtbVUTlTg7k',
+  authDomain: 'snapcattapi.firebaseapp.com',
+  projectId: 'snapcattapi',
+  storageBucket: 'snapcattapi.appspot.com',
+  messagingSenderId: '444863578937',
+  appId: '1:444863578937:web:09c1c4b431e2e25a7c5ee8',
+  measurementId: 'G-TZE6VNR3QC'
 };
 
 const app = initializeApp(firebaseConfig);
@@ -18,4 +18,4 @@ const auth = getAuth(app);
 const firestore = getFirestore(app);
 const storage = getStorage(app);
 
-export { app, auth, firestore, storage };
+export { auth, firestore, storage };

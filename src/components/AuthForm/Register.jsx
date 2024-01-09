@@ -9,6 +9,7 @@ import {
 import { useState } from 'react';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import useRegisterWithEmailAndPassword from '../../hooks/useRegisterWithEmailAndPassword';
+import firebaseErrors from '../../firebase/firebaseErrors';
 
 const Register = () => {
   const [inputs, setInputs] = useState({
@@ -75,7 +76,7 @@ const Register = () => {
       {error && (
         <Alert status="error" fontSize={14} p={3} borderRadius={4}>
           <AlertIcon fontSize={18} />
-          {error.message}
+          {firebaseErrors[error.code]}
         </Alert>
       )}
 

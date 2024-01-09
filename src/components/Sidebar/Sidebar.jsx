@@ -1,9 +1,9 @@
 import {
   Avatar,
   Box,
+  Button,
   Flex,
   Link,
-  Tooltip,
   useMediaQuery
 } from '@chakra-ui/react';
 import { Link as RouterLink } from 'react-router-dom';
@@ -16,41 +16,35 @@ import {
   ReelsLogo,
   CreatePostLogo
 } from '../../assets/constants';
+import useLogout from '../../hooks/useLogout';
 
 const SidebarItem = ({ icon, text, link, showOnMobile = true }) => {
   const [isMobile] = useMediaQuery('(max-width: 48em)');
   return (
-    <Tooltip
-      hasArrow
-      placement={'top'}
-      ml={{ base: 0, md: 1 }}
-      openDelay={500}
-      display={'none'}>
-      <Link
-        as={link ? RouterLink : 'div'}
-        to={link}
+    <Link
+      as={link ? RouterLink : 'div'}
+      to={link}
+      display={{
+        base: isMobile && !showOnMobile ? 'none' : 'flex',
+        md: 'flex'
+      }}
+      alignItems={'center'}
+      gap={{ base: 2, md: 4 }}
+      _hover={{ bg: 'whiteAlpha.400' }}
+      borderRadius={6}
+      p={2}
+      w={{ base: 10, md: 'full' }}
+      h={{ base: 10 }}
+      justifyContent={{ base: 'center', md: 'flex-start' }}>
+      {icon}
+      <Box
         display={{
-          base: isMobile && !showOnMobile ? 'none' : 'flex',
-          md: 'flex'
-        }}
-        alignItems={'center'}
-        gap={{ base: 2, md: 4 }}
-        _hover={{ bg: 'whiteAlpha.400' }}
-        borderRadius={6}
-        p={2}
-        w={{ base: 10, md: 'full' }}
-        h={{ base: 10 }}
-        justifyContent={{ base: 'center', md: 'flex-start' }}>
-        {icon}
-        <Box
-          display={{
-            base: isMobile && !showOnMobile ? 'block' : 'none',
-            md: 'block'
-          }}>
-          {text}
-        </Box>
-      </Link>
-    </Tooltip>
+          base: isMobile && !showOnMobile ? 'block' : 'none',
+          md: 'block'
+        }}>
+        {text}
+      </Box>
+    </Link>
   );
 };
 
@@ -84,6 +78,7 @@ const Sidebar = () => {
       link: '/trichains'
     }
   ];
+  const { handleLogout, isLoggingOut } = useLogout();
 
   return (
     <Box
@@ -126,30 +121,28 @@ const Sidebar = () => {
             <SidebarItem key={index} {...item} />
           ))}
         </Flex>
-        <Tooltip
-          hasArrow
-          label={'Sair'}
-          placement={'right'}
-          ml={1}
-          openDelay={500}
-          display={{ base: 'block', md: 'none' }}>
-          <Link
-            ml={{ base: 2 }}
-            display={{ base: 'none', md: 'flex' }}
-            to={'/auth'}
-            as={RouterLink}
-            alignItems={'center'}
-            gap={4}
-            _hover={{ bg: 'whiteAlpha.400' }}
-            w={{ md: 'full' }}
-            borderRadius={6}
-            p={{ base: 1, md: 2 }}
-            mt={{ md: 'auto' }}
-            justifyContent={{ base: 'center', md: 'flex-start' }}>
-            <BiLogOut size={25} />
-            <Box display={{ base: 'none', md: 'block' }}>Sair</Box>
-          </Link>
-        </Tooltip>
+        {/* Sair */}
+        <Flex
+          display={{ base: 'none', md: 'flex' }}
+          onClick={handleLogout}
+          ml={{ base: 2 }}
+          alignItems={'center'}
+          gap={4}
+          _hover={{ bg: 'whiteAlpha.400' }}
+          w={{ md: 'full' }}
+          borderRadius={6}
+          p={{ base: 1, md: 2 }}
+          mt={{ md: 'auto' }}
+          justifyContent={{ base: 'center', md: 'flex-start' }}>
+          <BiLogOut size={25} />
+          <Button
+            display={{ base: 'none', md: 'block' }}
+            variant={'ghost'}
+            _hover={{ bg: 'transparent' }}
+            isLoading={isLoggingOut}>
+            Sair
+          </Button>
+        </Flex>
       </Flex>
     </Box>
   );
