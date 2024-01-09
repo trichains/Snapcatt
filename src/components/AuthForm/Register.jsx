@@ -9,7 +9,7 @@ import {
 import { useState } from 'react';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import useRegisterWithEmailAndPassword from '../../hooks/useRegisterWithEmailAndPassword';
-import firebaseErrors from '../../firebase/firebaseErrors';
+import firebaseErrors from '../../../firebaseErrors';
 
 const Register = () => {
   const [inputs, setInputs] = useState({
