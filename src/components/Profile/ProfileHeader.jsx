@@ -6,11 +6,20 @@ import {
   Text,
   VStack
 } from '@chakra-ui/react';
-import { BiLogOut } from 'react-icons/bi';
+import useUserProfileStore from '../../store/userProfileStore';
+import useAuthStore from '../../store/authStore';
 import useLogout from '../../hooks/useLogout';
+import { BiLogOut } from 'react-icons/bi';
 
 const ProfileHeader = () => {
   const { handleLogout, isLoggingOut } = useLogout();
+  const { userProfile } = useUserProfileStore();
+  const authUser = useAuthStore((state) => state.user);
+
+  const visitingOwnProfileAndAuth =
+    authUser && authUser.username === userProfile.username;
+  const visitingAnotherProfileAndAuth =
+    authUser && authUser.username !== userProfile.username;
 
   return (
     <Flex
@@ -22,8 +31,9 @@ const ProfileHeader = () => {
         justifySelf={'center'}
         alignSelf={'flex-start'}
         mx={'auto'}>
-        <Avatar name="trichains" src="/profilepic.jpg" alt="Profile logo" />
+        <Avatar src={userProfile.profilePicURL} alt="Profile logo" />
       </AvatarGroup>
+
       <VStack alignItems={'start'} gap={2} mx={'auto'} flex={1}>
         <Flex
           gap={4}
@@ -31,67 +41,83 @@ const ProfileHeader = () => {
           justifyContent={{ base: 'center', sm: 'flex-start' }}
           alignItems={'center'}
           w={'full'}>
-          <Text fontSize={'lg'}>trichains</Text>
+          <Text fontSize={'lg'}>{userProfile.username}</Text>
 
-          <Flex gap={5} mb={2} alignItems={'center'} justifyContent={'center'}>
-            <Button
-              size={'sm'}
-              colorScheme="gray"
-              variant={'outline'}
-              cursor={'pointer'}
-              _hover={{ bg: 'whiteAlpha.300' }}>
-              Editar perfil
-            </Button>
+          {visitingOwnProfileAndAuth && (
             <Flex
-              onClick={handleLogout}
-              display={{ base: 'flex', md: 'none' }}
-              position={'relative'}
+              gap={5}
+              mb={2}
               alignItems={'center'}
-              fontSize={'sm'}
-              _hover={{ bg: 'red.600' }}
-              borderRadius={6}>
-              <BiLogOut style={{ position: 'absolute', left: 10 }} size={20} />
+              justifyContent={'center'}>
               <Button
                 size={'sm'}
-                pl={10}
+                colorScheme="gray"
                 variant={'outline'}
-                _hover={{ bg: 'transparent' }}
-                isLoading={isLoggingOut}>
-                Sair
+                cursor={'pointer'}
+                _hover={{ bg: 'whiteAlpha.300' }}>
+                Editar perfil
+              </Button>
+              <Flex
+                onClick={handleLogout}
+                display={{ base: 'flex', md: 'none' }}
+                position={'relative'}
+                alignItems={'center'}
+                fontSize={'sm'}
+                _hover={{ bg: 'red.600' }}
+                borderRadius={6}>
+                <BiLogOut
+                  style={{ position: 'absolute', left: 10 }}
+                  size={20}
+                />
+                <Button
+                  size={'sm'}
+                  pl={10}
+                  variant={'outline'}
+                  _hover={{ bg: 'transparent' }}
+                  isLoading={isLoggingOut}>
+                  Sair
+                </Button>
+              </Flex>
+            </Flex>
+          )}
+          {visitingAnotherProfileAndAuth && (
+            <Flex gap={5} alignItems={'center'} justifyContent={'center'}>
+              <Button
+                size={'sm'}
+                colorScheme="yellow"
+                _hover={{ bg: 'yellow.300' }}>
+                Seguir
               </Button>
             </Flex>
-          </Flex>
+          )}
         </Flex>
 
         <Flex alignItems={'center'} gap={{ base: 2, sm: 4 }}>
           <Text fontSize={{ base: 'xs', md: 'sm' }}>
             <Text as={'span'} fontWeight={'bold'} mr={1}>
-              4
+              {userProfile.posts.length}
             </Text>
-            publicações
+            postagens
           </Text>
           <Text fontSize={{ base: 'xs', md: 'sm' }}>
             <Text as={'span'} fontWeight={'bold'} mr={1}>
-              162
+              {userProfile.followers.length}
             </Text>
             seguidores
           </Text>
           <Text fontSize={{ base: 'xs', md: 'sm' }}>
             <Text as={'span'} fontWeight={'bold'} mr={1}>
-              200
+              {userProfile.following.length}
             </Text>
             seguindo
           </Text>
         </Flex>
         <Flex alignItems={'center'} gap={4}>
           <Text fontSize={'sm'} fontWeight={'bold'}>
-            Cristhian Almeida
+            {userProfile.fullName}
           </Text>
         </Flex>
-        <Text fontSize={'sm'}>
-          Apaixonado por programação, sempre transformando ideias em Realidade
-          Digital.
-        </Text>
+        <Text fontSize={'sm'}>{userProfile.bio}</Text>
       </VStack>
     </Flex>
   );
