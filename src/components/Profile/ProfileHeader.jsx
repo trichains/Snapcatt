@@ -4,12 +4,14 @@ import {
   Button,
   Flex,
   Text,
+  useDisclosure,
   VStack
 } from '@chakra-ui/react';
 import useUserProfileStore from '../../store/userProfileStore';
 import useAuthStore from '../../store/authStore';
 import useLogout from '../../hooks/useLogout';
 import { BiLogOut } from 'react-icons/bi';
+import EditProfile from './EditProfile';
 
 const ProfileHeader = () => {
   const { handleLogout, isLoggingOut } = useLogout();
@@ -20,6 +22,7 @@ const ProfileHeader = () => {
     authUser && authUser.username === userProfile.username;
   const visitingAnotherProfileAndAuth =
     authUser && authUser.username !== userProfile.username;
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <Flex
@@ -31,7 +34,7 @@ const ProfileHeader = () => {
         justifySelf={'center'}
         alignSelf={'flex-start'}
         mx={'auto'}>
-        <Avatar src={userProfile.profilePicURL} alt="Profile logo" />
+        <Avatar src={userProfile.profilePicURL} alt="Foto do Usuário" />
       </AvatarGroup>
 
       <VStack alignItems={'start'} gap={2} mx={'auto'} flex={1}>
@@ -54,7 +57,8 @@ const ProfileHeader = () => {
                 colorScheme="gray"
                 variant={'outline'}
                 cursor={'pointer'}
-                _hover={{ bg: 'whiteAlpha.300' }}>
+                _hover={{ bg: 'whiteAlpha.300' }}
+                onClick={onOpen}>
                 Editar perfil
               </Button>
               <Flex
@@ -119,6 +123,7 @@ const ProfileHeader = () => {
         </Flex>
         <Text fontSize={'sm'}>{userProfile.bio}</Text>
       </VStack>
+      {isOpen && <EditProfile isOpen={isOpen} onClose={onClose} />}
     </Flex>
   );
 };

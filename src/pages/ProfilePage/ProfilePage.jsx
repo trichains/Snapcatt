@@ -53,19 +53,29 @@ const ProfileHeaderSkeleton = () => {
   return (
     <Flex
       gap={{ base: 4, sm: 10 }}
-      py={10}
+      py={5}
       direction={{ base: 'column', sm: 'row' }}
       justifyContent={'center'}
       alignItems={'center'}>
-      <SkeletonCircle size="24" />
+      <SkeletonCircle size={{ base: '24', sm: '32' }} />
 
       <VStack
         alignItems={{ base: 'center', sm: 'flex-start' }}
         gap={2}
         mx={'auto'}
         flex={1}>
-        <Skeleton height="12px" width="150px" />
-        <Skeleton height="12px" width="100px" />
+        <Skeleton
+          height={{ base: '12px', sm: '16px' }}
+          width={{ base: '150px', sm: '200px' }}
+        />
+        <Skeleton
+          height={{ base: '12px', sm: '16px' }}
+          width={{ base: '100px', sm: '150px' }}
+        />
+        <Skeleton
+          height={{ base: '12px', sm: '16px' }}
+          width={{ base: '50px', sm: '100px' }}
+        />
       </VStack>
     </Flex>
   );
@@ -73,7 +83,14 @@ const ProfileHeaderSkeleton = () => {
 
 const UserNotFound = () => {
   return (
-    <Flex flexDir={'column'} textAlign={'center'} mx={'auto'}>
+    <Flex
+      alignItems={'center'}
+      justifyContent={'center'}
+      h={{ base: '50vh', sm: '40vh' }}
+      gap={2}
+      flexDir={'column'}
+      textAlign={'center'}
+      mx={'auto'}>
       <Text fontSize={'2xl'}>Usuário não encontrado</Text>
       <Link
         as={RouterLink}

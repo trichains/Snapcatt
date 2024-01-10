@@ -42,7 +42,7 @@ const Register = () => {
         _placeholder={{ color: 'whiteAlpha.600' }}
       />
       <Input
-        placeholder="Nome Completo"
+        placeholder="Nome"
         fontSize={14}
         type="text"
         size={'sm'}
