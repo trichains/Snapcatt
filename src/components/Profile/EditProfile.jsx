@@ -15,8 +15,12 @@ import {
   ModalOverlay,
   Stack
 } from '@chakra-ui/react';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import useAuthStore from '../../store/authStore';
+import usePreviewImg from '../../hooks/usePreviewImg';
+import useEditProfile from '../../hooks/useEditProfile';
+import useShowToast from '../../hooks/useShowToast';
+import firebaseErrors from '../../../firebaseErrors';
 
 const EditProfile = ({ isOpen, onClose }) => {
   const [inputs, setInputs] = useState({
@@ -26,9 +30,19 @@ const EditProfile = ({ isOpen, onClose }) => {
   });
 
   const authUser = useAuthStore((state) => state.user);
+  const fileRef = useRef(null);
+  const { handleImageChange, selectedFile, setSelectedFile } = usePreviewImg();
+  const { isUpdating, editProfile } = useEditProfile(false);
+  const showToast = useShowToast();
 
-  const handleEditProfile = () => {
-    console.log(inputs);
+  const handleEditProfile = async () => {
+    try {
+      await editProfile(inputs, selectedFile);
+      setSelectedFile(null);
+      onClose();
+    } catch (error) {
+      showToast('Erro', firebaseErrors[error.code], 'error');
+    }
   };
 
   return (
@@ -61,11 +75,23 @@ const EditProfile = ({ isOpen, onClose }) => {
                     direction={['column', 'row']}
                     spacing={{ base: 2, sm: 6 }}>
                     <Center>
-                      <Avatar size="xl" src={''} border={'2px solid white '} />
+                      <Avatar
+                        size="xl"
+                        src={selectedFile || authUser.profilePicURL}
+                        border={'2px solid white '}
+                      />
                     </Center>
                     <Center w="full">
-                      <Button w="full">Alterar imagem</Button>
+                      <Button w="full" onClick={() => fileRef.current.click()}>
+                        Alterar imagem
+                      </Button>
                     </Center>
+                    <Input
+                      hidden
+                      ref={fileRef}
+                      type="file"
+                      onChange={handleImageChange}
+                    />
                   </Stack>
                 </FormControl>
 
@@ -124,7 +150,8 @@ const EditProfile = ({ isOpen, onClose }) => {
                     size="sm"
                     w="full"
                     _hover={{ bg: 'blue.500' }}
-                    onClick={handleEditProfile}>
+                    onClick={handleEditProfile}
+                    isLoading={isUpdating}>
                     Salvar
                   </Button>
                 </Stack>
