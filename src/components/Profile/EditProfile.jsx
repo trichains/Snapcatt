@@ -28,11 +28,10 @@ const EditProfile = ({ isOpen, onClose }) => {
     username: '',
     bio: ''
   });
-
   const authUser = useAuthStore((state) => state.user);
   const fileRef = useRef(null);
   const { handleImageChange, selectedFile, setSelectedFile } = usePreviewImg();
-  const { isUpdating, editProfile } = useEditProfile(false);
+  const { isUpdating, editProfile } = useEditProfile();
   const showToast = useShowToast();
 
   const handleEditProfile = async () => {
