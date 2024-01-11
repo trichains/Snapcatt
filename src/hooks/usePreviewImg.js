@@ -29,7 +29,7 @@ const usePreviewImg = () => {
     } else {
       showToast(
         'Erro/Formato de arquivo inválido',
-        'Selecione apenas imagens',
+        'Selecione uma imagem',
         'error'
       );
       setSelectedFile(null);
