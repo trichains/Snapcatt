@@ -12,6 +12,10 @@ import useRegisterWithEmailAndPassword from '../../hooks/useRegisterWithEmailAnd
 import firebaseErrors from '../../../firebaseErrors';
 
 const Register = () => {
+  const MAX_USERNAME_LENGTH = 15;
+  const MAX_FULLNAME_LENGTH = 30;
+  const MAX_EMAIL_LENGTH = 40;
+
   const [inputs, setInputs] = useState({
     fullName: '',
     username: '',
@@ -20,6 +24,27 @@ const Register = () => {
   });
   const [showPassword, setShowPassword] = useState(false);
   const { loading, error, register } = useRegisterWithEmailAndPassword();
+
+  const handleInputChange = (field, value) => {
+    // Limita o comprimento da entrada com base no campo
+    let valorTruncado = value;
+    switch (field) {
+      case 'username':
+        valorTruncado = value.slice(0, MAX_USERNAME_LENGTH);
+        break;
+      case 'fullName':
+        valorTruncado = value.slice(0, MAX_FULLNAME_LENGTH);
+        break;
+      case 'email':
+        valorTruncado = value.slice(0, MAX_EMAIL_LENGTH);
+        break;
+      default:
+        break;
+    }
+
+    setInputs({ ...inputs, [field]: valorTruncado });
+  };
+
   return (
     <>
       <Input
@@ -29,7 +54,7 @@ const Register = () => {
         size={'sm'}
         autoComplete="email"
         value={inputs.email}
-        onChange={(e) => setInputs({ ...inputs, email: e.target.value })}
+        onChange={(e) => handleInputChange('email', e.target.value)}
         _placeholder={{ color: 'whiteAlpha.600' }}
       />
       <Input
@@ -38,7 +63,7 @@ const Register = () => {
         type="text"
         size={'sm'}
         value={inputs.username}
-        onChange={(e) => setInputs({ ...inputs, username: e.target.value })}
+        onChange={(e) => handleInputChange('username', e.target.value)}
         _placeholder={{ color: 'whiteAlpha.600' }}
       />
       <Input
@@ -47,7 +72,7 @@ const Register = () => {
         type="text"
         size={'sm'}
         value={inputs.fullName}
-        onChange={(e) => setInputs({ ...inputs, fullName: e.target.value })}
+        onChange={(e) => handleInputChange('fullName', e.target.value)}
         _placeholder={{ color: 'whiteAlpha.600' }}
       />
       <InputGroup>
