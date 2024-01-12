@@ -16,7 +16,7 @@ import {
   useDisclosure
 } from '@chakra-ui/react';
 import { CreatePostLogo } from '../../assets/constants';
-import { MdImageSearch } from 'react-icons/md';
+import { LuImagePlus } from 'react-icons/lu';
 import { useRef, useState } from 'react';
 import usePreviewImg from '../../hooks/usePreviewImg';
 import useUserProfileStore from '../../store/userProfileStore';
@@ -51,11 +51,15 @@ const CreatePost = () => {
         <ModalOverlay />
 
         <ModalContent bg={'black'} border={'1px solid gray'}>
-          <ModalHeader p={{ base: 2, md: 4 }}>
-            Criar nova publicação
-          </ModalHeader>
+          <Flex
+            direction={'column'}
+            alignItems={{ base: 'center', md: 'start' }}>
+            <ModalHeader p={{ base: 2, md: 4 }}>
+              Criar nova publicação
+            </ModalHeader>
+          </Flex>
           <ModalCloseButton />
-          <ModalBody p={2}>
+          <ModalBody p={4}>
             <Textarea
               placeholder="Escreva uma legenda..."
               resize={'none'}
@@ -64,19 +68,24 @@ const CreatePost = () => {
               onChange={(e) => setCaption(e.target.value)}
             />
             <Input
+              w={'full'}
               type="file"
               hidden
               ref={imageRef}
               onChange={handleImageChange}
             />
-            <Button
-              leftIcon={<MdImageSearch size={25} />}
-              onClick={() => imageRef.current.click()}
-              mt={2}
-              colorScheme={'blue'}
-              cursor={'pointer'}>
-              Selecionar imagem
-            </Button>
+            <Flex justifyContent={{ base: 'center', md: 'start' }}>
+              <Button
+                p={2}
+                leftIcon={<LuImagePlus size={24} />}
+                onClick={() => imageRef.current.click()}
+                mt={2}
+                variant={'outline'}
+                colorScheme={'gray'}
+                cursor={'pointer'}>
+                Selecionar imagem
+              </Button>
+            </Flex>
             {selectedFile && (
               <Flex
                 mt={4}
@@ -99,7 +108,9 @@ const CreatePost = () => {
           </ModalBody>
 
           <ModalFooter>
-            <Button mr={3}>Publicar</Button>
+            <Button colorScheme="blue" mr={3}>
+              Publicar
+            </Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
