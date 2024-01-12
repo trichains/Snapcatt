@@ -36,34 +36,26 @@ const Sidebar = () => {
           cursor="pointer">
           <SnapcattLogo />
         </Link>
-        <Flex
-          direction={{ base: 'row', md: 'column' }}
-          alignItems={{ base: 'center', md: 'flex-start' }}
-          gap={5}
-          borderRadius={6}
-          p={2}
-          justifyContent={{ base: 'center', md: 'flex-start' }}>
+        <Flex direction={{ base: 'row', md: 'column' }} gap={5} p={2}>
           <SidebarItems />
         </Flex>
 
         {/* Sair */}
         <Flex
+          direction={'column'}
           display={{ base: 'none', md: 'flex' }}
-          onClick={handleLogout}
-          ml={{ base: 2 }}
-          alignItems={'center'}
-          gap={4}
-          _hover={{ bg: 'whiteAlpha.100' }}
-          w={{ md: 'full' }}
-          borderRadius={6}
-          p={{ base: 1, md: 2 }}
-          mt={{ md: 'auto' }}
-          justifyContent={{ base: 'center', md: 'flex-start' }}>
-          <BiLogOut size={25} />
+          p="2"
+          mt={{ md: 'auto' }}>
           <Button
-            display={{ base: 'none', md: 'block' }}
+            justifyContent={'flex-start'}
+            onClick={handleLogout}
+            leftIcon={<BiLogOut size={25} />}
+            display={{ base: 'none', md: 'flex' }}
+            gap={2}
+            p={2}
             variant={'ghost'}
-            _hover={{ bg: 'transparent' }}
+            _hover={{ bg: 'whiteAlpha.200' }}
+            cursor={'pointer'}
             isLoading={isLoggingOut}>
             Sair
           </Button>

@@ -11,6 +11,7 @@ const useSearchUser = () => {
 
   const searchUser = async (username) => {
     setIsLoading(true);
+    setUser(null);
     try {
       const q = query(
         collection(firestore, 'users'),
@@ -25,6 +26,7 @@ const useSearchUser = () => {
       });
     } catch (error) {
       showToast('Erro', firebaseErrors[error.code], 'error');
+      setUser(null);
     } finally {
       setIsLoading(false);
     }
