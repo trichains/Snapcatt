@@ -12,9 +12,9 @@ const Sidebar = () => {
     <Box
       bg={'black'}
       height={{ base: 'auto', md: '100vh' }}
-      // borderTop={{ base: '1px solid', md: 'none' }}
-      // borderRight={{ base: 'none', md: '1px solid' }}
-      // borderColor={{ base: 'whiteAlpha.400', md: 'whiteAlpha.300' }}
+      borderTop={{ base: '1px solid', md: 'none' }}
+      borderRight={{ base: 'none', md: '1px solid' }}
+      borderColor={{ base: '#121212', md: '#121212' }}
       w={'full'}
       px={{ base: 0, md: 4 }}
       py={{ base: 0, md: 8 }}

@@ -50,7 +50,7 @@ const CreatePost = () => {
       <Modal isOpen={isOpen} onClose={onClose} size="xl">
         <ModalOverlay />
 
-        <ModalContent bg={'black'} border={'1px solid gray'}>
+        <ModalContent bg={'black'} border={'1px solid #121212'}>
           <Flex
             direction={'column'}
             alignItems={{ base: 'center', md: 'start' }}>
