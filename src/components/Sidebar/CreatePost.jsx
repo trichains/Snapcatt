@@ -41,6 +41,7 @@ const CreatePost = () => {
         _hover={{ bg: 'whiteAlpha.200' }}
         borderRadius={6}
         cursor={'pointer'}
+        alignItems={'center'}
         p={2}
         onClick={onOpen}>
         <CreatePostLogo />
@@ -50,7 +51,9 @@ const CreatePost = () => {
         <ModalOverlay />
 
         <ModalContent bg={'black'} border={'1px solid gray'}>
-          <ModalHeader p={{ base: 2, md: 4 }}>Criar nova publicação</ModalHeader>
+          <ModalHeader p={{ base: 2, md: 4 }}>
+            Criar nova publicação
+          </ModalHeader>
           <ModalCloseButton />
           <ModalBody p={2}>
             <Textarea
@@ -80,7 +83,11 @@ const CreatePost = () => {
                 w={'full'}
                 position={'relative'}
                 justifyContent={'center'}>
-                <Image maxH={'sm'} src={selectedFile} alt="Imagem selecionada" />
+                <Image
+                  maxH={{ base: '30vh', md: '50vh' }}
+                  src={selectedFile}
+                  alt="Imagem selecionada"
+                />
                 <CloseButton
                   onClick={() => setSelectedFile(null)}
                   position={'absolute'}
