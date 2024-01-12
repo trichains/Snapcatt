@@ -4,7 +4,7 @@ import useShowToast from './useShowToast';
 import { doc, updateDoc } from 'firebase/firestore';
 import { storage, firestore } from '../firebase/firebase';
 import { ref, getDownloadURL, uploadString } from 'firebase/storage';
-import firebaseErrors from '../../firebaseErrors';
+import firebaseErrors from '../Utils/firebaseErrors';
 import useUserProfileStore from '../store/userProfileStore';
 
 const useEditProfile = () => {

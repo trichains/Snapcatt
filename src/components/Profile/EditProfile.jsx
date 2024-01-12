@@ -20,7 +20,7 @@ import useAuthStore from '../../store/authStore';
 import usePreviewImg from '../../hooks/usePreviewImg';
 import useEditProfile from '../../hooks/useEditProfile';
 import useShowToast from '../../hooks/useShowToast';
-import firebaseErrors from '../../../firebaseErrors';
+import firebaseErrors from '../../Utils/firebaseErrors';
 
 const EditProfile = ({ isOpen, onClose }) => {
   const [inputs, setInputs] = useState({

@@ -4,7 +4,7 @@ import { auth, firestore } from '../../firebase/firebase';
 import useShowToast from '../../hooks/useShowToast';
 import useAuthStore from '../../store/authStore';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
-import firebaseErrors from '../../../firebaseErrors';
+import firebaseErrors from '../../Utils/firebaseErrors';
 
 const GoogleAuth = ({ prefix }) => {
   const [signInWithGoogle, , , error] = useSignInWithGoogle(auth);

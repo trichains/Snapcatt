@@ -2,7 +2,7 @@ import { Alert, AlertIcon, Button, Input } from '@chakra-ui/react';
 import { useState } from 'react';
 import useLogin from '../../hooks/useLogin';
 
-import firebaseErrors from '../../../firebaseErrors';
+import firebaseErrors from '../../Utils/firebaseErrors';
 
 const Login = () => {
   const [inputs, setInputs] = useState({

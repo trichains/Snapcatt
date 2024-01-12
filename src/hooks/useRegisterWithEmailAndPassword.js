@@ -9,7 +9,7 @@ import {
   where
 } from 'firebase/firestore';
 import useShowToast from './useShowToast';
-import firebaseErrors from '../../firebaseErrors';
+import firebaseErrors from '../Utils/firebaseErrors';
 import useAuthStore from '../store/authStore';
 import validateInput from '../Utils/validationUtils';
 

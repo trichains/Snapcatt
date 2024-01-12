@@ -23,24 +23,6 @@ const validateInput = (inputs, showToast) => {
     return false;
   }
 
-  // Verificar o comprimento máximo do username e full name
-  if (lowerCaseUsername.length > 15) {
-    showToast(
-      'Erro',
-      'O nome de usuário deve ter no máximo 15 caracteres.',
-      'error'
-    );
-    return false;
-  }
-  if (inputs.fullName.length > 20) {
-    showToast(
-      'Erro',
-      'O nome completo deve ter no máximo 20 caracteres.',
-      'error'
-    );
-    return false;
-  }
-
   return true;
 };
 
