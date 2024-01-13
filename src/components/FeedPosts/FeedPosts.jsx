@@ -18,7 +18,7 @@ const FeedPosts = () => {
     }, 2000);
   }, []);
   return (
-    <Container maxW={'container.sm'} py={10} px={2}>
+    <Container maxW={'container.sm'} py={5} px={2}>
       {isLoading &&
         [0, 1, 2, 3].map((_, idx) => (
           <VStack key={idx} gap={4} alignItems={'flex-start'} mb={10}>

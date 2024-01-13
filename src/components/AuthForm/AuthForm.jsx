@@ -11,9 +11,9 @@ const AuthForm = () => {
   return (
     <>
       <Box
-        border={'1px'}
-        borderColor={'#222'}
-        bg={'#000'}
+        border={'1px solid'}
+        borderColor={'#121212'}
+        bg={'#000310'}
         borderRadius={10}
         padding={5}>
         <VStack spacing={4}>
@@ -36,11 +36,11 @@ const AuthForm = () => {
         </VStack>
       </Box>
       <Box
-        border={'1px'}
+        border={'1px solid'}
         borderRadius={10}
         padding={5}
-        borderColor={'#222'}
-        bg={'#000'}>
+        borderColor={'#121212'}
+        bg={'#000310'}>
         <Flex alignItems={'center'} justifyContent={'center'}>
           <Box mx={2} fontSize={14}>
             {isLogin ? 'Não possui conta?' : 'Já possui conta?'}

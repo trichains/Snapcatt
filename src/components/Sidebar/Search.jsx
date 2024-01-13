@@ -32,12 +32,11 @@ const Search = () => {
       <Flex
         onClick={onOpen}
         alignItems={'center'}
-        gap={4}
         cursor={'pointer'}
         _hover={{ bg: 'whiteAlpha.100' }}
         borderRadius={6}
-        p={2}
-        w={'full'}>
+        gap={4}
+        p={{ base: 1, md: 2 }}>
         <SearchLogo />
         <Box display={{ base: 'none', md: 'block' }}>Pesquisar</Box>
       </Flex>

@@ -9,8 +9,7 @@ const Notifications = () => {
       gap={4}
       _hover={{ bg: 'whiteAlpha.200' }}
       borderRadius={6}
-      p={2}
-      w={'full'}>
+      p={{ base: 1, md: 2 }}>
       <NotificationsLogo />
       <Box display={{ base: 'none', md: 'block' }}>Notificações</Box>
     </Flex>

@@ -10,7 +10,7 @@ const Sidebar = () => {
   const { handleLogout, isLoggingOut } = useLogout();
   return (
     <Box
-      bg={'black'}
+      bg={'#000310'}
       height={{ base: 'auto', md: '100vh' }}
       borderTop={{ base: '1px solid', md: 'none' }}
       borderRight={{ base: 'none', md: '1px solid' }}
@@ -36,7 +36,11 @@ const Sidebar = () => {
           cursor="pointer">
           <SnapcattLogo />
         </Link>
-        <Flex direction={{ base: 'row', md: 'column' }} gap={5} p={2}>
+        <Flex
+          direction={{ base: 'row', md: 'column' }}
+          justifyContent={'space-between'}
+          gap={{ base: 8, md: 5 }}
+          p={2}>
           <SidebarItems />
         </Flex>
 

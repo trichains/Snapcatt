@@ -11,10 +11,10 @@ const ProfileLink = () => {
       to={`/${authUser?.username}`}
       as={RouterLink}
       alignItems={'center'}
-      gap={3}
       _hover={{ bg: 'whiteAlpha.200' }}
       borderRadius={6}
-      p={2}>
+      gap={4}
+      p={{ base: 1, md: 2 }}>
       <Avatar
         ml={{ base: 0, md: -1 }}
         size={'sm'}

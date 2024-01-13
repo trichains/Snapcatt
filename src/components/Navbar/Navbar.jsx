@@ -1,31 +1,26 @@
-import { Button, Container, Flex, Image } from '@chakra-ui/react';
-import { Link } from 'react-router-dom';
+import { Container, Flex, Image, Link } from '@chakra-ui/react';
+import { Link as RouterLink } from 'react-router-dom';
+import Notifications from '../Sidebar/Notifications';
+import CreatePost from '../Sidebar/CreatePost';
 
 const Navbar = () => {
   return (
-    <Container maxW={'container.lg'} my={4}>
-      <Flex
-        w={'full'}
-        justifyContent={{ base: 'center', sm: 'space-between' }}
-        alignItems={'center'}>
-        <Image
-          src="/logo.svg"
-          alt="Snapcatt"
-          h={20}
-          display={{ base: 'none', sm: 'block' }}
-          cursor={'pointer'}
-        />
+    <Container
+      maxW={'container.md'}
+      bg={'#000310'}
+      display={{ base: 'block', md: 'none' }}
+      justifyContent={'center'}
+      position={'fixed'}
+      borderBottom={'1px solid'}
+      borderColor={'#222'}
+      zIndex={99}>
+      <Flex p={2} alignItems={'center'} justifyContent={'space-between'}>
+        <Link to={'/'} as={RouterLink}>
+          <Image src="/logo.svg" alt="Snapcatt" h={8} cursor={'pointer'} />
+        </Link>
         <Flex gap={4}>
-          <Link to={'/auth'}>
-            <Button variant="outline" size={'sm'}>
-              Entrar
-            </Button>
-          </Link>
-          <Link to={'/auth'}>
-            <Button colorScheme="yellow" size={'sm'}>
-              Cadastrar
-            </Button>
-          </Link>
+          <CreatePost />
+          <Notifications />
         </Flex>
       </Flex>
     </Container>

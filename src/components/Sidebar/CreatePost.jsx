@@ -56,12 +56,12 @@ const CreatePost = () => {
   return (
     <>
       <Flex
-        gap={4}
         _hover={{ bg: 'whiteAlpha.200' }}
         borderRadius={6}
         cursor={'pointer'}
         alignItems={'center'}
-        p={2}
+        gap={4}
+        p={{ base: 1, md: 2 }}
         onClick={onOpen}>
         <CreatePostLogo />
         <Box display={{ base: 'none', md: 'block' }}>Criar</Box>

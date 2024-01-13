@@ -9,10 +9,10 @@ const Home = () => {
       to={'/'}
       as={RouterLink}
       alignItems={'center'}
-      gap={4}
       _hover={{ bg: 'whiteAlpha.200' }}
       borderRadius={6}
-      p={2}>
+      gap={4}
+      p={{ base: 1, md: 2 }}>
       <AiFillHome size={25} />
       <Box display={{ base: 'none', md: 'block' }}>Início</Box>
     </Link>

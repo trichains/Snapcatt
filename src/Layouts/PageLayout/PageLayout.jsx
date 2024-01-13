@@ -3,6 +3,7 @@ import { Box, Flex, Spinner } from '@chakra-ui/react';
 import { useLocation } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import Sidebar from '../../components/Sidebar/Sidebar';
+import NotLoggedIn from '../../components/Navbar/NotLoggedIn';
 import Navbar from '../../components/Navbar/Navbar';
 
 // em vez de adicionar o componente Sidebar a cada página, eu adicionei apenas uma vez ao componente PageLayout e envolvi os filhos com ele. Dessa forma, podemos ter uma barra lateral em todas as páginas, exceto na AuthPage.
@@ -20,12 +21,17 @@ const PageLayout = ({ children }) => {
     <Flex flexDir={canRenderNavbar ? 'column' : 'row'}>
       {/* barra lateral á esquerda */}
       {canRenderSidebar ? (
-        <Box w={{ md: '240px' }}>
-          <Sidebar />
-        </Box>
+        <>
+          <Box w={{ md: '240px' }}>
+            <Sidebar />
+          </Box>
+          <Box>
+            <Navbar />
+          </Box>
+        </>
       ) : null}
       {/* Navbar */}
-      {canRenderNavbar ? <Navbar /> : null}
+      {canRenderNavbar ? <NotLoggedIn /> : null}
 
       {/* conteúdo da página á direita */}
       <Box flex={1} mx={'auto'}>
