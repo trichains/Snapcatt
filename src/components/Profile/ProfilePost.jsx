@@ -83,7 +83,7 @@ const ProfilePost = ({ post }) => {
           <ModalCloseButton />
           <ModalBody bg={'black'} pb={5}>
             <Flex
-              maxH={{ base: '90vh', md: '70vh' }}
+              maxH={{ base: '80vh', md: '70vh' }}
               minH={'50vh'}
               direction={{ base: 'column', md: 'row' }}
               gap={{ base: 0, md: 4 }}
