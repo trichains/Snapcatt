@@ -93,6 +93,7 @@ const ProfilePost = ({ post }) => {
                 borderRadius={10}
                 border={'1px solid #121212'}
                 justifyContent={'center'}
+                alignItems={{ base: 'center', md: 'normal' }}
                 overflowY={'auto'}
                 flex={{ base: 1, md: 1.5 }}>
                 <Image src={post.imageURL} alt="Postagens do perfil" />
