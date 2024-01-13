@@ -49,7 +49,7 @@ const EditProfile = ({ isOpen, onClose }) => {
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent
-          bg={'black'}
+          bg={'#000310'}
           boxShadow={'xl'}
           border={'1px solid gray'}
           mx={3}>

@@ -44,7 +44,7 @@ const Search = () => {
       <Modal isOpen={isOpen} onClose={onClose} motionPreset="slideInBottom">
         <ModalOverlay />
         <ModalContent
-          bg={'black'}
+          bg={'#000310'}
           border={'1px solid gray'}
           borderRadius={6}
           maxW={400}>
