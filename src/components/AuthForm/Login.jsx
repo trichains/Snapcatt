@@ -39,7 +39,9 @@ const Login = () => {
       )}
       <Button
         w={'full'}
-        colorScheme="blue"
+        bg={'yellow.300'}
+        color={'black'}
+        _hover={{ bg: 'yellow.400' }}
         size={'sm'}
         fontSize={14}
         isLoading={loading}
