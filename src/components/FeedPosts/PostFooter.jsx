@@ -46,7 +46,7 @@ const PostFooter = ({ username, isProfilePage }) => {
           <Text fontSize={'sm'} fontWeight={700}>
             {username}{' '}
             <Text as={'span'} fontWeight={400}>
-              💛💛
+              💙🩵
             </Text>
           </Text>
           <Text fontSize={'sm'} color={'gray.500'}>

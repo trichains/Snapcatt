@@ -10,7 +10,7 @@ const Sidebar = () => {
   const { handleLogout, isLoggingOut } = useLogout();
   return (
     <Box
-      bg={'black'}
+      bg={'#000310'}
       height={{ base: 'auto', md: '100vh' }}
       borderTop={{ base: '1px solid', md: 'none' }}
       borderRight={{ base: 'none', md: '1px solid' }}

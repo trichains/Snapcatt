@@ -1,6 +1,6 @@
 import {
   Avatar,
-  Box,
+  Button,
   Divider,
   Flex,
   GridItem,
@@ -17,11 +17,14 @@ import {
 import { AiFillHeart } from 'react-icons/ai';
 import { FaComment } from 'react-icons/fa';
 import { MdDelete } from 'react-icons/md';
-import Comment from '../Comment/Comment';
 import PostFooter from '../FeedPosts/PostFooter';
+import useUserProfileStore from '../../store/userProfileStore';
+import useAuthStore from '../../store/authStore';
 
-const ProfilePost = ({ img }) => {
+const ProfilePost = ({ post }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const userProfile = useUserProfileStore((state) => state.userProfile);
+  const authUser = useAuthStore((state) => state.user);
 
   return (
     <>
@@ -50,19 +53,19 @@ const ProfilePost = ({ img }) => {
             <Flex>
               <AiFillHeart size={20} />
               <Text fontWeight={'bold'} ml={2}>
-                7
+                {post.likes.length}
               </Text>
             </Flex>
             <Flex>
               <FaComment size={20} />
               <Text fontWeight={'bold'} ml={2}>
-                3
+                {post.comments.length}
               </Text>
             </Flex>
           </Flex>
         </Flex>
         <Image
-          src={img}
+          src={post.imageURL}
           alt="Postagens do perfil"
           w={'100%'}
           h={'100%'}
@@ -80,19 +83,21 @@ const ProfilePost = ({ img }) => {
           <ModalCloseButton />
           <ModalBody bg={'black'} pb={5}>
             <Flex
+              maxH={{ base: '90vh', md: '70vh' }}
+              minH={'50vh'}
               direction={{ base: 'column', md: 'row' }}
               gap={{ base: 0, md: 4 }}
               w={{ base: 'full', sm: '70%', md: 'full' }}
               mx={'auto'}>
-              <Box
-                borderRadius={4}
-                overflow={'hidden'}
-                border={'1px solid'}
-                borderColor={'whiteAlpha.300'}
+              <Flex
+                borderRadius={10}
+                border={'1px solid #121212'}
+                justifyContent={'center'}
+                overflowY={'auto'}
                 flex={{ base: 1, md: 1.5 }}>
-                <Image src={img} alt="Postagens do perfil" />
-              </Box>
-              {/* Seção de comentarios */}
+                <Image src={post.imageURL} alt="Postagens do perfil" />
+              </Flex>
+              {/* Seção de comentários */}
               <Flex
                 mt={{ base: 2, md: 0 }}
                 flex={1}
@@ -102,79 +107,32 @@ const ProfilePost = ({ img }) => {
                 <Flex alignItems={'center'} justifyContent={'space-between'}>
                   <Flex alignItems={'center'} gap={4}>
                     <Avatar
-                      src={'/profilepic.jpg'}
+                      src={userProfile.profilePicURL}
                       size={'sm'}
-                      name="trichains"
+                      name="Nome de Usuário"
                     />
                     <Text fontWeight={'bold'} fontSize={14}>
-                      trichains
+                      {userProfile.username}
                     </Text>
                   </Flex>
 
-                  <Box
-                    _hover={{ bg: 'whiteAlpha.300', color: 'red.600' }}
-                    borderRadius={4}
-                    p={1}>
-                    <MdDelete size={20} cursor={'pointer'}></MdDelete>
-                  </Box>
+                  {authUser?.uid === userProfile.uid && (
+                    <Button
+                      size={'sm'}
+                      bg={'transparent'}
+                      _hover={{ bg: 'whiteAlpha.300', color: 'red.600' }}
+                      borderRadius={4}
+                      p={1}>
+                      <MdDelete size={20} cursor={'pointer'}></MdDelete>
+                    </Button>
+                  )}
                 </Flex>
                 <Divider my={{ base: 2, md: 4 }} bg={'gray.500'} />
                 <VStack
                   w={'full'}
                   alignItems={'start'}
                   maxH={{ base: '150px', md: '350px' }}
-                  overflowY={'auto'}>
-                  <Comment
-                    createdAt={'12h atrás'}
-                    username="anabanana"
-                    profilePic="/img1.jpg"
-                    text={'gato fei kkkkkkkkkk'}
-                    characterLimit={70}
-                  />
-                  <Comment
-                    createdAt={'3h atrás'}
-                    username="blablagatogatogatogatogatogatogato"
-                    profilePic="/img2.jpg"
-                    text={'quero bolo'}
-                    usernameLimit={15}
-                    characterLimit={70}
-                  />
-                  <Comment
-                    createdAt={'1d atrás'}
-                    username="cristhian.almeida"
-                    usernameLimit={15}
-                    profilePic="/img3.jpg"
-                    text={'sou lindo'}
-                    characterLimit={70}
-                  />
-                  <Comment
-                    createdAt={'1d atrás'}
-                    username="gato"
-                    profilePic="/img3.jpg"
-                    characterLimit={70}
-                    text={
-                      'KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK'
-                    }
-                  />
-                  <Comment
-                    createdAt={'1d atrás'}
-                    username="gato"
-                    profilePic="/img3.jpg"
-                    characterLimit={70}
-                    text={
-                      'KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK'
-                    }
-                  />
-                  <Comment
-                    createdAt={'1d atrás'}
-                    username="gato"
-                    profilePic="/img3.jpg"
-                    characterLimit={70}
-                    text={
-                      'adsasdiasdijadsijdsjiads sjidjasjiasjiadsj idasaadsasddasasdasdsdjidasiadjsjiadsajisdijsdjisdijadsijdsijadjisjiadsiasd'
-                    }
-                  />
-                </VStack>
+                  overflowY={'auto'}></VStack>
                 <Divider my={{ base: 0, md: 4 }} bg={'gray.580'} />
                 <PostFooter isProfilePage={true} />
               </Flex>

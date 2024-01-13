@@ -3,8 +3,8 @@ import {
   Button,
   CloseButton,
   Flex,
-  Input,
   Image,
+  Input,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -18,21 +18,40 @@ import {
 import { CreatePostLogo } from '../../assets/constants';
 import { LuImagePlus } from 'react-icons/lu';
 import { useRef, useState } from 'react';
+import useAuthStore from '../../store/authStore';
+import usePostStore from '../../store/postStore';
 import usePreviewImg from '../../hooks/usePreviewImg';
+import useShowToast from '../../hooks/useShowToast';
 import useUserProfileStore from '../../store/userProfileStore';
 import { firestore, storage } from '../../firebase/firebase';
-import { addDoc, collection, doc } from 'firebase/firestore';
-import { ref } from 'firebase/storage';
-import usePostStore from '../../store/postStore';
-import useAuthStore from '../../store/authStore';
-import useShowToast from '../../hooks/useShowToast';
+import { useLocation } from 'react-router-dom';
+import {
+  addDoc,
+  arrayUnion,
+  collection,
+  doc,
+  updateDoc
+} from 'firebase/firestore';
+import { getDownloadURL, ref, uploadString } from 'firebase/storage';
 
 const CreatePost = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [caption, setCaption] = useState('');
   const imageRef = useRef(null);
-  const { handleImageChange, selectedFile, setSelectedFile } =
-    usePreviewImg(imageRef);
+  const { handleImageChange, selectedFile, setSelectedFile } = usePreviewImg();
+  const { handleCreatePost, isLoading } = useCreatePost();
+  const showToast = useShowToast();
+
+  const handlePostCreation = async () => {
+    try {
+      await handleCreatePost(selectedFile, caption);
+      onClose();
+      setCaption('');
+      setSelectedFile(null);
+    } catch (error) {
+      showToast('Erro', error.message, 'error');
+    }
+  };
 
   return (
     <>
@@ -108,7 +127,11 @@ const CreatePost = () => {
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme="blue" mr={3}>
+            <Button
+              onClick={handlePostCreation}
+              isLoading={isLoading}
+              colorScheme="blue"
+              mr={3}>
               Publicar
             </Button>
           </ModalFooter>
@@ -126,9 +149,11 @@ function useCreatePost() {
   const authUser = useAuthStore((state) => state.user);
   const createPost = usePostStore((state) => state.createPost);
   const addPost = useUserProfileStore((state) => state.addPost);
+  const userProfile = useUserProfileStore((state) => state.userProfile);
   const { pathname } = useLocation();
 
   const handleCreatePost = async (selectedFile, caption) => {
+    if (isLoading) return;
     if (!selectedFile)
       throw new Error('Por favor, selecione uma imagem para publicar');
     setIsLoading(true);
@@ -144,10 +169,31 @@ function useCreatePost() {
       const postDocRef = await addDoc(collection(firestore, 'posts'), newPost);
       const userDocRef = doc(firestore, 'users', authUser.uid);
       const imageRef = ref(storage, `posts/${postDocRef.id}`);
+
+      await updateDoc(userDocRef, { posts: arrayUnion(postDocRef.id) });
+      await uploadString(imageRef, selectedFile, 'data_url');
+      const downloadURL = await getDownloadURL(imageRef);
+
+      await updateDoc(postDocRef, { imageURL: downloadURL });
+
+      newPost.imageURL = downloadURL;
+
+      if (userProfile.uid === authUser.uid)
+        createPost({ ...newPost, id: postDocRef.id });
+
+      if (pathname !== '/' && userProfile.uid === authUser.uid)
+        addPost({ ...newPost, id: postDocRef.id });
+
+      showToast('Sucesso', 'Publicação criada com sucesso', 'success');
     } catch (error) {
       showToast('Erro', error.message, 'error');
     } finally {
       setIsLoading(false);
     }
+  };
+
+  return {
+    handleCreatePost,
+    isLoading
   };
 }
