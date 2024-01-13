@@ -3,6 +3,7 @@ import {
   AvatarGroup,
   Button,
   Flex,
+  Link,
   Text,
   useDisclosure,
   VStack
@@ -10,6 +11,7 @@ import {
 import useUserProfileStore from '../../store/userProfileStore';
 import useAuthStore from '../../store/authStore';
 import useLogout from '../../hooks/useLogout';
+import { Link as RouterLink } from 'react-router-dom';
 import { BiLogOut } from 'react-icons/bi';
 import EditProfile from './EditProfile';
 import useFollowUser from '../../hooks/useFollowUser';
@@ -72,14 +74,16 @@ const ProfileHeader = () => {
                   style={{ position: 'absolute', left: 10 }}
                   size={20}
                 />
-                <Button
-                  size={'sm'}
-                  pl={10}
-                  variant={'outline'}
-                  _hover={{ bg: 'transparent' }}
-                  isLoading={isLoggingOut}>
-                  Sair
-                </Button>
+                <Link to={'/auth'} as={RouterLink}>
+                  <Button
+                    size={'sm'}
+                    pl={10}
+                    variant={'outline'}
+                    _hover={{ bg: 'transparent' }}
+                    isLoading={isLoggingOut}>
+                    Sair
+                  </Button>
+                </Link>
               </Flex>
             </Flex>
           )}

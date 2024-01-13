@@ -11,7 +11,7 @@ const NotLoggedIn = () => {
         <Image
           src="/logo.svg"
           alt="Snapcatt"
-          h={20}
+          h={16}
           display={{ base: 'none', sm: 'block' }}
           cursor={'pointer'}
         />
