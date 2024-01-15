@@ -56,7 +56,6 @@ const CreatePost = () => {
   return (
     <>
       <Flex
-        display={{ base: 'none', md: 'flex' }}
         _hover={{ bg: 'whiteAlpha.200' }}
         borderRadius={6}
         cursor={'pointer'}

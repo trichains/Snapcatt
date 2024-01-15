@@ -1,7 +1,7 @@
 import { Container, Flex, Image, Link } from '@chakra-ui/react';
 import { Link as RouterLink } from 'react-router-dom';
-import Notifications from '../Sidebar/Notifications';
-import CreatePost from '../Sidebar/CreatePost';
+import NotificationsMobile from '../Sidebar/NotificationsMobile';
+import CreatePostMobile from '../Sidebar/CreatePostMobile';
 
 const Navbar = () => {
   return (
@@ -19,8 +19,8 @@ const Navbar = () => {
           <Image src="/logo.svg" alt="Snapcatt" h={8} cursor={'pointer'} />
         </Link>
         <Flex gap={4}>
-          <CreatePost />
-          <Notifications />
+          <CreatePostMobile />
+          <NotificationsMobile />
         </Flex>
       </Flex>
     </Container>

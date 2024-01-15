@@ -4,7 +4,6 @@ import { NotificationsLogo } from '../../assets/constants';
 const Notifications = () => {
   return (
     <Flex
-      display={{ base: 'none', md: 'flex' }}
       cursor={'pointer'}
       alignItems={'center'}
       gap={4}
