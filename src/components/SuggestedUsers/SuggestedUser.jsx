@@ -1,4 +1,4 @@
-import { Avatar, Box, Button, Flex, VStack } from '@chakra-ui/react';
+import { Avatar, Button, Flex, VStack } from '@chakra-ui/react';
 import useFollowUser from '../../hooks/useFollowUser';
 import useAuthStore from '../../store/authStore';
 
