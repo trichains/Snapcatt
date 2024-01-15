@@ -45,9 +45,9 @@ const Search = () => {
         <ModalOverlay />
         <ModalContent
           bg={'#000310'}
-          border={'1px solid gray'}
+          border={'1px solid #222'}
           borderRadius={6}
-          maxW={400}>
+          maxW={'400px'}>
           <ModalHeader>Pesquisar</ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={6}>
@@ -68,7 +68,12 @@ const Search = () => {
                 </Button>
               </Flex>
             </form>
-            {user && <SuggestedUser user={user} setUser={setUser} />}
+            <Flex
+              width={'full'}
+              justifyContent={'center'}
+              alignItems={'center'}>
+              {user && <SuggestedUser user={user} setUser={setUser} />}
+            </Flex>
           </ModalBody>
         </ModalContent>
       </Modal>
