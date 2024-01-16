@@ -1,5 +1,4 @@
 import {
-  Avatar,
   Button,
   Divider,
   Flex,
@@ -27,6 +26,7 @@ import { FaComment } from 'react-icons/fa';
 import { firestore, storage } from '../../firebase/firebase';
 import { MdDelete } from 'react-icons/md';
 import { useState } from 'react';
+import Caption from '../Comment/Caption';
 
 const ProfilePost = ({ post }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -143,14 +143,8 @@ const ProfilePost = ({ post }) => {
                 display={'flex'}>
                 <Flex alignItems={'center'} justifyContent={'space-between'}>
                   <Flex alignItems={'center'} gap={4}>
-                    <Avatar
-                      src={userProfile.profilePicURL}
-                      size={'sm'}
-                      name="Nome de Usuário"
-                    />
-                    <Text fontWeight={'bold'} fontSize={14}>
-                      {userProfile.username}
-                    </Text>
+                    {/* Legenda */}
+                    {post.caption && <Caption post={post} />}
                   </Flex>
 
                   {authUser?.uid === userProfile.uid && (
@@ -172,6 +166,7 @@ const ProfilePost = ({ post }) => {
                   alignItems={'start'}
                   maxH={{ base: '150px', md: '350px' }}
                   overflowY={'auto'}>
+                  {/* Comentários */}
                   {post.comments.map((comment) => (
                     <Comment key={comment.id} comment={comment} />
                   ))}
