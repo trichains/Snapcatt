@@ -9,7 +9,7 @@ import {
 import { useState } from 'react';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import useRegisterWithEmailAndPassword from '../../hooks/useRegisterWithEmailAndPassword';
-import firebaseErrors from '../../Utils/firebaseErrors';
+import firebaseErrors from '../../utils/firebaseErrors';
 
 const Register = () => {
   const MAX_USERNAME_LENGTH = 20;

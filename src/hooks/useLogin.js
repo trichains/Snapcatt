@@ -1,7 +1,7 @@
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import useShowToast from './useShowToast';
 import { auth, firestore } from '../firebase/firebase';
-import firebaseErrors from '../Utils/firebaseErrors';
+import firebaseErrors from '../utils/firebaseErrors';
 import { doc, getDoc } from 'firebase/firestore';
 import useAuthStore from '../store/authStore';
 

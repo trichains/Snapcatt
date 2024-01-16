@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import useShowToast from './useShowToast';
-import firebaseErrors from '../Utils/firebaseErrors';
+import firebaseErrors from '../utils/firebaseErrors';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { firestore } from '../firebase/firebase';
 import useUserProfileStore from '../store/userProfileStore';

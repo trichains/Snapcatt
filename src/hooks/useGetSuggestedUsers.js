@@ -10,7 +10,7 @@ import {
   where
 } from 'firebase/firestore';
 import { firestore } from '../firebase/firebase';
-import firebaseErrors from '../Utils/firebaseErrors';
+import firebaseErrors from '../utils/firebaseErrors';
 
 const useGetSuggestedUsers = () => {
   const [isLoading, setIsLoading] = useState(true);

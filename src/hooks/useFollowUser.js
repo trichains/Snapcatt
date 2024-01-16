@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import useAuthStore from '../store/authStore';
 import useUserProfileStore from '../store/userProfileStore';
 import useShowToast from './useShowToast';
-import firebaseErrors from '../Utils/firebaseErrors';
+import firebaseErrors from '../utils/firebaseErrors';
 import { arrayRemove, arrayUnion, doc, updateDoc } from 'firebase/firestore';
 import { firestore } from '../firebase/firebase';
 

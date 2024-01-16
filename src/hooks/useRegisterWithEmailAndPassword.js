@@ -9,9 +9,9 @@ import {
   where
 } from 'firebase/firestore';
 import useShowToast from './useShowToast';
-import firebaseErrors from '../Utils/firebaseErrors';
+import firebaseErrors from '../utils/firebaseErrors';
 import useAuthStore from '../store/authStore';
-import validateInput from '../Utils/validationUtils';
+import validateInput from '../utils/validationUtils';
 
 const useRegisterWithEmailAndPassword = () => {
   const [createUserWithEmailAndPassword, , loading, error] =
