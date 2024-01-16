@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import useShowToast from './useShowToast';
-import firebaseErrors from '../utils/firebaseErrors';
+// import firebaseErrors from '../utils/firebaseErrors';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { firestore } from '../firebase/firebase';
 import useUserProfileStore from '../store/userProfileStore';
@@ -29,7 +29,7 @@ const useGetUserProfileByUsername = (username) => {
 
         setUserProfile(userDoc);
       } catch (error) {
-        showToast('Erro', firebaseErrors[error.code], 'error');
+        showToast('Erro', error.message[error.code], 'error');
       } finally {
         setIsLoading(false);
       }
