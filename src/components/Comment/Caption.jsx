@@ -1,6 +1,6 @@
 import { Avatar, Flex, Text } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
-import { timeAgo } from '../../utilse/timeAgo';
+import { timeAgo } from '../../utils/timeAgo';
 import useUserProfileStore from '../../store/userProfileStore';
 
 const Caption = ({ post }) => {
