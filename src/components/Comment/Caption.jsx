@@ -15,6 +15,7 @@ const Caption = ({ post }) => {
           <Link to={`/${userProfile.username}`}>
             <Text fontWeight={'bold'} fontSize={14}>
               {userProfile.username}
+              aa
             </Text>
           </Link>
           <Text fontSize={12} color={'gray'}>
