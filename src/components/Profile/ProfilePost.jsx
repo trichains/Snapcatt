@@ -14,18 +14,19 @@ import {
   useDisclosure,
   VStack
 } from '@chakra-ui/react';
-import { AiFillHeart } from 'react-icons/ai';
-import { FaComment } from 'react-icons/fa';
-import { MdDelete } from 'react-icons/md';
+import Comment from '../Comment/Comment';
 import PostFooter from '../FeedPosts/PostFooter';
 import useUserProfileStore from '../../store/userProfileStore';
 import useAuthStore from '../../store/authStore';
-import useShowToast from '../../hooks/useShowToast';
-import { useState } from 'react';
-import { firestore, storage } from '../../firebase/firebase';
-import { deleteObject, ref } from 'firebase/storage';
-import { arrayRemove, deleteDoc, doc, updateDoc } from 'firebase/firestore';
 import usePostStore from '../../store/postStore';
+import useShowToast from '../../hooks/useShowToast';
+import { AiFillHeart } from 'react-icons/ai';
+import { arrayRemove, deleteDoc, doc, updateDoc } from 'firebase/firestore';
+import { deleteObject, ref } from 'firebase/storage';
+import { FaComment } from 'react-icons/fa';
+import { firestore, storage } from '../../firebase/firebase';
+import { MdDelete } from 'react-icons/md';
+import { useState } from 'react';
 
 const ProfilePost = ({ post }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -34,9 +35,7 @@ const ProfilePost = ({ post }) => {
   const showToast = useShowToast();
   const [isDeleting, setIsDeleting] = useState(false);
   const deletePost = usePostStore((state) => state.deletePost);
-  const decrementPostsCount = useUserProfileStore(
-    (state) => state.deletePost
-  );
+  const decrementPostsCount = useUserProfileStore((state) => state.deletePost);
 
   const handleDeletePost = async () => {
     if (!window.confirm('Tem certeza que deseja excluir esta publicação?'))
@@ -172,9 +171,13 @@ const ProfilePost = ({ post }) => {
                   w={'full'}
                   alignItems={'start'}
                   maxH={{ base: '150px', md: '350px' }}
-                  overflowY={'auto'}></VStack>
+                  overflowY={'auto'}>
+                  {post.comments.map((comment) => (
+                    <Comment key={comment.id} comment={comment} />
+                  ))}
+                </VStack>
                 <Divider my={{ base: 0, md: 4 }} bg={'gray.580'} />
-                <PostFooter isProfilePage={true} />
+                <PostFooter isProfilePage={true} post={post} />
               </Flex>
             </Flex>
           </ModalBody>

@@ -1,51 +1,22 @@
 import { useState } from 'react';
 import { Avatar, Flex, Text, Button } from '@chakra-ui/react';
 
-const Comment = ({
-  createdAt,
-  username,
-  profilePic,
-  text,
-  characterLimit,
-  usernameLimit
-}) => {
-  const [showFullComment, setShowFullComment] = useState(false);
-
-  const displayUsername =
-    username.length > usernameLimit
-      ? `${username.slice(0, usernameLimit)}...`
-      : username;
-  const displayText = showFullComment ? text : text.slice(0, characterLimit);
-
-  const handleToggleComment = () => {
-    setShowFullComment(!showFullComment);
-  };
-
+const Comment = ({ comment }) => {
   return (
     <Flex maxW={{ base: '65vw', md: '20vw' }} gap={4}>
-      <Avatar src={profilePic} name={displayUsername} size={'sm'} />
+      {/* <Avatar src={profilePic} name={displayUsername} size={'sm'} /> */}
       <Flex w={'full'} direction={'column'}>
         <Flex alignItems={'center'} gap={2}>
           <Text fontWeight={'bold'} fontSize={14}>
-            {displayUsername}
+            {/* {displayUsername} */}
           </Text>
           <Text fontSize={12} color={'gray'}>
-            {createdAt}
+            {/* {createdAt} */}
           </Text>
         </Flex>
         <Text whiteSpace={'pre-wrap'} fontSize={14}>
-          {displayText}
+          {comment.comment}
         </Text>
-        {text.length > characterLimit && (
-          <Button
-            onClick={handleToggleComment}
-            variant="link"
-            fontSize={12}
-            color={'blue.500'}
-            mt={1}>
-            {showFullComment ? 'Ver menos' : 'Ver mais'}
-          </Button>
-        )}
       </Flex>
     </Flex>
   );
