@@ -1,23 +1,12 @@
-import {
-  Box,
-  Button,
-  Flex,
-  Input,
-  InputGroup,
-  InputRightElement,
-  Text
-} from '@chakra-ui/react';
+import { Box, Button, Flex, Input, InputGroup, InputRightElement, Text } from '@chakra-ui/react';
 import { useRef, useState } from 'react';
-import {
-  CommentLogo,
-  NotificationsLogo,
-  UnlikeLogo
-} from '../../assets/constants';
+import { CommentLogo, NotificationsLogo, UnlikeLogo } from '../../assets/constants';
+import { timeAgo } from '../../utils/timeAgo';
 import usePostComment from '../../hooks/usePostComment';
 import useAuthStore from '../../store/authStore';
 import useLikePost from '../../hooks/useLikePost';
 
-const PostFooter = ({ post, username, isProfilePage }) => {
+const PostFooter = ({ post, isProfilePage, creatorProfile }) => {
   const { isCommenting, handlePostComment } = usePostComment();
   const [comment, setComment] = useState('');
   const authUser = useAuthStore((state) => state.user);
@@ -36,36 +25,43 @@ const PostFooter = ({ post, username, isProfilePage }) => {
           {!isLiked ? <NotificationsLogo /> : <UnlikeLogo />}
         </Box>
 
-        <Box
-          cursor={'pointer'}
-          fontSize={18}
-          onClick={() => commentRef.current.focus()}>
+        <Box cursor={'pointer'} fontSize={18} onClick={() => commentRef.current.focus()}>
           <CommentLogo />
         </Box>
       </Flex>
       <Text fontWeight={600} fontSize={'sm'}>
         {likes} Curtidas
       </Text>
+
+      {isProfilePage && (
+        <Text fontSize={12} color={'gray'}>
+          Postado {timeAgo(post.createdAt)}
+        </Text>
+      )}
+
       {!isProfilePage && (
         <>
           <Text fontSize={'sm'} fontWeight={700}>
-            {username}{' '}
+            {creatorProfile?.username}{' '}
             <Text as={'span'} fontWeight={400}>
-              💙🩵
+              {post.caption}
             </Text>
           </Text>
-          <Text fontSize={'sm'} color={'gray.500'}>
-            Veja todos os comentários
-          </Text>
+          {post.comments.length < 2 && (
+            <Text fontSize={'sm'} color={'gray.500'} cursor={'pointer'}>
+              {post.comments.length} comentário
+            </Text>
+          )}
+          {post.comments.length > 1 && (
+            <Text fontSize={'sm'} color={'gray.500'} cursor={'pointer'}>
+              {post.comments.length} comentários
+            </Text>
+          )}
         </>
       )}
 
       {authUser && (
-        <Flex
-          alignItems={'center'}
-          gap={2}
-          justifyContent={'space-between'}
-          w={'full'}>
+        <Flex alignItems={'center'} gap={2} justifyContent={'space-between'} w={'full'}>
           <InputGroup>
             <Input
               onChange={(e) => setComment(e.target.value)}
