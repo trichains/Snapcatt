@@ -12,7 +12,7 @@ const AuthForm = () => {
   return (
     <>
       <Box bg={'#000'} borderRadius={10} overflow={'hidden'} w={380} h={420} position={'relative'} className="box">
-        <Box className='borderLine' />
+        <Box className="borderLine" />
         <Box inset={1} position={'absolute'} zIndex={2} bg={'#000310'} borderRadius={10} padding={4}>
           <VStack spacing={4}>
             <Image src="/logo.svg" h={24} cursor={'pointer'} alt="Snapcatt" />
@@ -27,7 +27,7 @@ const AuthForm = () => {
           </VStack>
         </Box>
       </Box>
-      <Box border={'1px solid'} borderRadius={10} padding={5} borderColor={'#121212'} bg={'#000310'}>
+      <Box border={'1px solid'} borderRadius={10} padding={5} borderColor={'#111'} bg={'#000310'}>
         <Flex alignItems={'center'} justifyContent={'center'}>
           <Box mx={2} fontSize={14}>
             {isLogin ? 'Não possui conta?' : 'Já possui conta?'}
