@@ -1,4 +1,5 @@
 import {
+  Box,
   Button,
   Divider,
   Flex,
@@ -38,8 +39,7 @@ const ProfilePost = ({ post }) => {
   const decrementPostsCount = useUserProfileStore((state) => state.deletePost);
 
   const handleDeletePost = async () => {
-    if (!window.confirm('Tem certeza que deseja excluir esta publicação?'))
-      return;
+    if (!window.confirm('Tem certeza que deseja excluir esta publicação?')) return;
     if (isDeleting) return;
 
     try {
@@ -100,24 +100,14 @@ const ProfilePost = ({ post }) => {
             </Flex>
           </Flex>
         </Flex>
-        <Image
-          src={post.imageURL}
-          alt="Postagens do perfil"
-          w={'100%'}
-          h={'100%'}
-          style={{ objectFit: 'cover' }}
-        />
+        <Image src={post.imageURL} alt="Postagens do perfil" w={'100%'} h={'100%'} style={{ objectFit: 'cover' }} />
       </GridItem>
 
-      <Modal
-        isOpen={isOpen}
-        onClose={onClose}
-        isCentered={true}
-        size={{ base: '3xl', md: '5xl' }}>
+      <Modal isOpen={isOpen} onClose={onClose} isCentered={true} size={{ base: '3xl', md: '5xl' }}>
         <ModalOverlay />
         <ModalContent>
           <ModalCloseButton />
-          <ModalBody bg={'black'} pb={5}>
+          <ModalBody bg={'#000310'} pb={5}>
             <Flex
               maxH={{ base: '80vh', md: '70vh' }}
               minH={'50vh'}
@@ -129,18 +119,14 @@ const ProfilePost = ({ post }) => {
                 borderRadius={10}
                 border={'1px solid #121212'}
                 justifyContent={'center'}
-                alignItems={{ base: 'center', md: 'normal' }}
+                inset={1}
+                alignItems={'center'}
                 overflowY={'auto'}
                 flex={{ base: 1, md: 1.5 }}>
                 <Image src={post.imageURL} alt="Postagens do perfil" />
               </Flex>
               {/* Seção de comentários */}
-              <Flex
-                mt={{ base: 2, md: 0 }}
-                flex={1}
-                flexDir={'column'}
-                px={{ base: 0, md: 10 }}
-                display={'flex'}>
+              <Flex mt={{ base: 2, md: 0 }} flex={1} flexDir={'column'} px={{ base: 0, md: 10 }} display={'flex'}>
                 <Flex alignItems={'center'} justifyContent={'space-between'}>
                   <Flex alignItems={'center'} gap={4}>
                     {/* Legenda */}
@@ -161,11 +147,7 @@ const ProfilePost = ({ post }) => {
                   )}
                 </Flex>
                 <Divider my={{ base: 2, md: 4 }} bg={'gray.500'} />
-                <VStack
-                  w={'full'}
-                  alignItems={'start'}
-                  maxH={{ base: '150px', md: '350px' }}
-                  overflowY={'auto'}>
+                <VStack w={'full'} alignItems={'start'} maxH={{ base: '150px', md: '350px' }} overflowY={'auto'}>
                   {/* Comentários */}
                   {post.comments.map((comment) => (
                     <Comment key={comment.id} comment={comment} />

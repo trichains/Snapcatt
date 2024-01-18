@@ -1,10 +1,11 @@
-import { Box, Button, Flex, Input, InputGroup, InputRightElement, Text } from '@chakra-ui/react';
+import { Box, Button, Flex, Input, InputGroup, InputRightElement, Text, useDisclosure } from '@chakra-ui/react';
 import { useRef, useState } from 'react';
 import { CommentLogo, NotificationsLogo, UnlikeLogo } from '../../assets/constants';
 import { timeAgo } from '../../utils/timeAgo';
 import usePostComment from '../../hooks/usePostComment';
 import useAuthStore from '../../store/authStore';
 import useLikePost from '../../hooks/useLikePost';
+import CommentsModal from '../Modals/CommentsModal';
 
 const PostFooter = ({ post, isProfilePage, creatorProfile }) => {
   const { isCommenting, handlePostComment } = usePostComment();
@@ -12,6 +13,7 @@ const PostFooter = ({ post, isProfilePage, creatorProfile }) => {
   const authUser = useAuthStore((state) => state.user);
   const commentRef = useRef(null);
   const { handleLikePost, isLiked, likes } = useLikePost(post);
+  const { isOpen, onOpen, onClose } = useDisclosure(() => {});
 
   const handleSubmitComment = async () => {
     await handlePostComment(post.id, comment);
@@ -25,7 +27,7 @@ const PostFooter = ({ post, isProfilePage, creatorProfile }) => {
           {!isLiked ? <NotificationsLogo /> : <UnlikeLogo />}
         </Box>
 
-        <Box cursor={'pointer'} fontSize={18} onClick={() => commentRef.current.focus()}>
+        <Box cursor={'pointer'} fontSize={18} onClick={onOpen}>
           <CommentLogo />
         </Box>
       </Flex>
@@ -47,16 +49,13 @@ const PostFooter = ({ post, isProfilePage, creatorProfile }) => {
               {post.caption}
             </Text>
           </Text>
-          {post.comments.length < 2 && (
-            <Text fontSize={'sm'} color={'gray.500'} cursor={'pointer'}>
-              {post.comments.length} comentário
+          {post.comments.length > 0 && (
+            <Text fontSize={'sm'} color={'gray.500'} cursor={'pointer'} onClick={onOpen}>
+              Veja todos os {post.comments.length} comentários
             </Text>
           )}
-          {post.comments.length > 1 && (
-            <Text fontSize={'sm'} color={'gray.500'} cursor={'pointer'}>
-              {post.comments.length} comentários
-            </Text>
-          )}
+          {/* Modal de comentários apenas na página principal */}
+          {isOpen ? <CommentsModal isOpen={isOpen} onClose={onClose} post={post} /> : null}
         </>
       )}
 
