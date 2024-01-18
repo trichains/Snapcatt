@@ -1,11 +1,4 @@
-import {
-  Alert,
-  AlertIcon,
-  Button,
-  Input,
-  InputGroup,
-  InputRightElement
-} from '@chakra-ui/react';
+import { Alert, AlertIcon, Button, Input, InputGroup, InputRightElement } from '@chakra-ui/react';
 import { useState } from 'react';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import useRegisterWithEmailAndPassword from '../../hooks/useRegisterWithEmailAndPassword';
@@ -85,14 +78,8 @@ const Register = () => {
           onChange={(e) => setInputs({ ...inputs, password: e.target.value })}
           _placeholder={{ color: 'whiteAlpha.600' }}
         />
-        <InputRightElement
-          h={'full'}
-          cursor={'pointer'}
-          onClick={() => setShowPassword(!showPassword)}>
-          <Button
-            variant={'ghost'}
-            size={'sm'}
-            onClick={() => setShowPassword(!showPassword)}>
+        <InputRightElement h={'full'} cursor={'pointer'} onClick={() => setShowPassword(!showPassword)}>
+          <Button variant={'ghost'} size={'sm'} onClick={() => setShowPassword(!showPassword)}>
             {showPassword ? <ViewIcon /> : <ViewOffIcon />}
           </Button>
         </InputRightElement>
