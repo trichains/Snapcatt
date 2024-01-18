@@ -23,7 +23,7 @@ const Register = () => {
     let valorTruncado = value;
     switch (field) {
       case 'username':
-        valorTruncado = value.slice(0, MAX_USERNAME_LENGTH);
+        valorTruncado = value.slice(0, MAX_USERNAME_LENGTH).toLowerCase();
         break;
       case 'fullName':
         valorTruncado = value.slice(0, MAX_FULLNAME_LENGTH);

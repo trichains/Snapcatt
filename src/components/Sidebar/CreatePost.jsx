@@ -25,13 +25,7 @@ import useShowToast from '../../hooks/useShowToast';
 import useUserProfileStore from '../../store/userProfileStore';
 import { firestore, storage } from '../../firebase/firebase';
 import { useLocation } from 'react-router-dom';
-import {
-  addDoc,
-  arrayUnion,
-  collection,
-  doc,
-  updateDoc
-} from 'firebase/firestore';
+import { addDoc, arrayUnion, collection, doc, updateDoc } from 'firebase/firestore';
 import { getDownloadURL, ref, uploadString } from 'firebase/storage';
 
 const CreatePost = () => {
@@ -71,12 +65,8 @@ const CreatePost = () => {
         <ModalOverlay />
 
         <ModalContent bg={'black'} border={'1px solid #121212'}>
-          <Flex
-            direction={'column'}
-            alignItems={{ base: 'center', md: 'start' }}>
-            <ModalHeader p={{ base: 2, md: 4 }}>
-              Criar nova publicação
-            </ModalHeader>
+          <Flex direction={'column'} alignItems={{ base: 'center', md: 'start' }}>
+            <ModalHeader p={{ base: 2, md: 4 }}>Criar nova publicação</ModalHeader>
           </Flex>
           <ModalCloseButton />
           <ModalBody p={4}>
@@ -87,13 +77,7 @@ const CreatePost = () => {
               value={caption}
               onChange={(e) => setCaption(e.target.value)}
             />
-            <Input
-              w={'full'}
-              type="file"
-              hidden
-              ref={imageRef}
-              onChange={handleImageChange}
-            />
+            <Input w={'full'} type="file" hidden ref={imageRef} onChange={handleImageChange} />
             <Flex justifyContent={{ base: 'center', md: 'start' }}>
               <Button
                 p={2}
@@ -107,32 +91,15 @@ const CreatePost = () => {
               </Button>
             </Flex>
             {selectedFile && (
-              <Flex
-                mt={4}
-                w={'full'}
-                position={'relative'}
-                justifyContent={'center'}>
-                <Image
-                  maxH={{ base: '30vh', md: '50vh' }}
-                  src={selectedFile}
-                  alt="Imagem selecionada"
-                />
-                <CloseButton
-                  onClick={() => setSelectedFile(null)}
-                  position={'absolute'}
-                  top={2}
-                  right={2}
-                />
+              <Flex mt={4} w={'full'} position={'relative'} justifyContent={'center'}>
+                <Image maxH={{ base: '30vh', md: '50vh' }} src={selectedFile} alt="Imagem selecionada" />
+                <CloseButton onClick={() => setSelectedFile(null)} position={'absolute'} top={2} right={2} />
               </Flex>
             )}
           </ModalBody>
 
           <ModalFooter>
-            <Button
-              onClick={handlePostCreation}
-              isLoading={isLoading}
-              colorScheme="blue"
-              mr={3}>
+            <Button onClick={handlePostCreation} isLoading={isLoading} colorScheme="blue" mr={3}>
               Publicar
             </Button>
           </ModalFooter>
@@ -155,8 +122,7 @@ function useCreatePost() {
 
   const handleCreatePost = async (selectedFile, caption) => {
     if (isLoading) return;
-    if (!selectedFile)
-      throw new Error('Por favor, selecione uma imagem para publicar');
+    if (!selectedFile) throw new Error('Por favor, selecione uma imagem para publicar');
     setIsLoading(true);
     const newPost = {
       caption: caption,
@@ -179,11 +145,9 @@ function useCreatePost() {
 
       newPost.imageURL = downloadURL;
 
-      if (userProfile.uid === authUser.uid)
-        createPost({ ...newPost, id: postDocRef.id });
+      if (userProfile.uid === authUser.uid) createPost({ ...newPost, id: postDocRef.id });
 
-      if (pathname !== '/' && userProfile.uid === authUser.uid)
-        addPost({ ...newPost, id: postDocRef.id });
+      if (pathname !== '/' && userProfile.uid === authUser.uid) addPost({ ...newPost, id: postDocRef.id });
 
       showToast('Sucesso', 'Publicação criada com sucesso', 'success');
     } catch (error) {
