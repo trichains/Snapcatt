@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import useAuthStore from '../store/authStore';
 import useUserProfileStore from '../store/userProfileStore';
 import useShowToast from './useShowToast';
-import firebaseErrors from '../utils/firebaseErrors';
 import { arrayRemove, arrayUnion, doc, updateDoc } from 'firebase/firestore';
 import { firestore } from '../firebase/firebase';
 
@@ -25,9 +24,7 @@ const useFollowUser = (user_ID) => {
       });
 
       await updateDoc(userToFollowOrUnfollowRef, {
-        followers: isFollowing
-          ? arrayRemove(authUser.uid)
-          : arrayUnion(authUser.uid)
+        followers: isFollowing ? arrayRemove(authUser.uid) : arrayUnion(authUser.uid)
       });
 
       if (isFollowing) {
@@ -39,9 +36,7 @@ const useFollowUser = (user_ID) => {
         if (userProfile)
           setUserProfile({
             ...userProfile,
-            followers: userProfile.followers.filter(
-              (uid) => uid !== authUser.uid
-            )
+            followers: userProfile.followers.filter((uid) => uid !== authUser.uid)
           });
 
         localStorage.setItem(
@@ -74,7 +69,7 @@ const useFollowUser = (user_ID) => {
         setIsFollowing(true);
       }
     } catch (error) {
-      showToast('Erro', firebaseErrors[error.code], 'error');
+      showToast('Erro', error.message, 'error');
     } finally {
       setIsUpdating(false);
     }

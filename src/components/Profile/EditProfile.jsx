@@ -20,7 +20,6 @@ import useAuthStore from '../../store/authStore';
 import usePreviewImg from '../../hooks/usePreviewImg';
 import useEditProfile from '../../hooks/useEditProfile';
 import useShowToast from '../../hooks/useShowToast';
-import firebaseErrors from '../../utils/firebaseErrors';
 
 const EditProfile = ({ isOpen, onClose }) => {
   const [inputs, setInputs] = useState({
@@ -40,7 +39,7 @@ const EditProfile = ({ isOpen, onClose }) => {
       setSelectedFile(null);
       onClose();
     } catch (error) {
-      showToast('Erro', firebaseErrors[error.code], 'error');
+      showToast('Erro', error.message, 'error');
     }
   };
 
@@ -48,11 +47,7 @@ const EditProfile = ({ isOpen, onClose }) => {
     <>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
-        <ModalContent
-          bg={'#000310'}
-          boxShadow={'xl'}
-          border={'1px solid gray'}
-          mx={3}>
+        <ModalContent bg={'#000310'} boxShadow={'xl'} border={'1px solid gray'} mx={3}>
           <ModalHeader />
           <ModalCloseButton />
           <ModalBody>
@@ -70,27 +65,16 @@ const EditProfile = ({ isOpen, onClose }) => {
                   Editar Perfil
                 </Heading>
                 <FormControl>
-                  <Stack
-                    direction={['column', 'row']}
-                    spacing={{ base: 2, sm: 6 }}>
+                  <Stack direction={['column', 'row']} spacing={{ base: 2, sm: 6 }}>
                     <Center>
-                      <Avatar
-                        size="xl"
-                        src={selectedFile || authUser.profilePicURL}
-                        border={'2px solid white '}
-                      />
+                      <Avatar size="xl" src={selectedFile || authUser.profilePicURL} border={'2px solid white '} />
                     </Center>
                     <Center w="full">
                       <Button w="full" onClick={() => fileRef.current.click()}>
                         Alterar imagem
                       </Button>
                     </Center>
-                    <Input
-                      hidden
-                      ref={fileRef}
-                      type="file"
-                      onChange={handleImageChange}
-                    />
+                    <Input hidden ref={fileRef} type="file" onChange={handleImageChange} />
                   </Stack>
                 </FormControl>
 
@@ -101,9 +85,7 @@ const EditProfile = ({ isOpen, onClose }) => {
                     size={'sm'}
                     type={'text'}
                     value={inputs.fullName || authUser.fullName}
-                    onChange={(e) =>
-                      setInputs({ ...inputs, fullName: e.target.value })
-                    }
+                    onChange={(e) => setInputs({ ...inputs, fullName: e.target.value })}
                   />
                 </FormControl>
 
@@ -114,9 +96,7 @@ const EditProfile = ({ isOpen, onClose }) => {
                     size={'sm'}
                     type={'text'}
                     value={inputs.username || authUser.username}
-                    onChange={(e) =>
-                      setInputs({ ...inputs, username: e.target.value })
-                    }
+                    onChange={(e) => setInputs({ ...inputs, username: e.target.value })}
                   />
                 </FormControl>
 
@@ -127,9 +107,7 @@ const EditProfile = ({ isOpen, onClose }) => {
                     size={'sm'}
                     type={'text'}
                     value={inputs.bio || authUser.bio}
-                    onChange={(e) =>
-                      setInputs({ ...inputs, bio: e.target.value })
-                    }
+                    onChange={(e) => setInputs({ ...inputs, bio: e.target.value })}
                   />
                 </FormControl>
 

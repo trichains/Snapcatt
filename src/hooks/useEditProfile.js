@@ -4,7 +4,6 @@ import useShowToast from './useShowToast';
 import { doc, updateDoc } from 'firebase/firestore';
 import { storage, firestore } from '../firebase/firebase';
 import { ref, getDownloadURL, uploadString } from 'firebase/storage';
-import firebaseErrors from '../utils/firebaseErrors';
 import useUserProfileStore from '../store/userProfileStore';
 
 const useEditProfile = () => {
@@ -44,7 +43,7 @@ const useEditProfile = () => {
       setUserProfile(updatedUser);
       showToast('Sucesso', 'Alterações salvas com sucesso', 'success');
     } catch (error) {
-      showToast('Erro', firebaseErrors[error.code], 'error');
+      showToast('Erro', error.message, 'error');
     }
   };
 

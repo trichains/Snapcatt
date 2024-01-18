@@ -2,7 +2,6 @@ import { useState } from 'react';
 import useShowToast from './useShowToast';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { firestore } from '../firebase/firebase';
-import firebaseErrors from '../utils/firebaseErrors';
 
 const useSearchUser = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -13,19 +12,15 @@ const useSearchUser = () => {
     setIsLoading(true);
     setUser(null);
     try {
-      const q = query(
-        collection(firestore, 'users'),
-        where('username', '==', username)
-      );
+      const q = query(collection(firestore, 'users'), where('username', '==', username));
       const querySnapshot = await getDocs(q);
-      if (querySnapshot.empty)
-        return showToast('Erro', 'Usuário não encontrado', 'error');
+      if (querySnapshot.empty) return showToast('Erro', 'Usuário não encontrado', 'error');
 
       querySnapshot.forEach((doc) => {
         setUser(doc.data());
       });
     } catch (error) {
-      showToast('Erro', firebaseErrors[error.code], 'error');
+      showToast('Erro', error.message, 'error');
       setUser(null);
     } finally {
       setIsLoading(false);

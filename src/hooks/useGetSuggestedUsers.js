@@ -1,16 +1,8 @@
 import { useEffect, useState } from 'react';
 import useAuthStore from '../store/authStore';
 import useShowToast from './useShowToast';
-import {
-  collection,
-  getDocs,
-  limit,
-  orderBy,
-  query,
-  where
-} from 'firebase/firestore';
+import { collection, getDocs, limit, orderBy, query, where } from 'firebase/firestore';
 import { firestore } from '../firebase/firebase';
-import firebaseErrors from '../utils/firebaseErrors';
 
 const useGetSuggestedUsers = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -39,7 +31,7 @@ const useGetSuggestedUsers = () => {
 
         setSuggestedUsers(users);
       } catch (error) {
-        showToast('Erro', firebaseErrors[error.code], 'error');
+        showToast('Erro', error.message, 'error');
       } finally {
         setIsLoading(false);
       }

@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import useShowToast from './useShowToast';
-import firebaseErrors from '../utils/firebaseErrors';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { firestore } from '../firebase/firebase';
 import useUserProfileStore from '../store/userProfileStore';
@@ -14,10 +13,7 @@ const useGetUserProfileByUsername = (username) => {
     const getUserProfile = async () => {
       setIsLoading(true);
       try {
-        const q = query(
-          collection(firestore, 'users'),
-          where('username', '==', username)
-        );
+        const q = query(collection(firestore, 'users'), where('username', '==', username));
         const querySnapshot = await getDocs(q);
 
         if (querySnapshot.empty) return setUserProfile(null);
@@ -29,7 +25,7 @@ const useGetUserProfileByUsername = (username) => {
 
         setUserProfile(userDoc);
       } catch (error) {
-        showToast('Erro', firebaseErrors[error.code], 'error');
+        showToast('Erro', error.message, 'error');
       } finally {
         setIsLoading(false);
       }
