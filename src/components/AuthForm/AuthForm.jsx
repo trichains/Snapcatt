@@ -11,7 +11,7 @@ const AuthForm = () => {
 
   return (
     <>
-      <Box bg={'#000'} borderRadius={10} overflow={'hidden'} w={380} h={420} position={'relative'} className="box">
+      <Box bg={'#000'} borderRadius={10} overflow={'hidden'} w={300} h={420} position={'relative'} className="box">
         <Box className="borderLine" />
         <Box inset={1} position={'absolute'} zIndex={2} bg={'#000310'} borderRadius={10} padding={4}>
           <VStack spacing={4}>
