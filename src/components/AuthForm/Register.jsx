@@ -94,7 +94,9 @@ const Register = () => {
 
       <Button
         w={'full'}
-        colorScheme="blue"
+        bg={'whiteAlpha.900'}
+        color={'black'}
+        _hover={{ bg: 'whiteAlpha.800' }}
         size={'sm'}
         fontSize={14}
         isLoading={loading}

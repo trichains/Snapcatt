@@ -11,21 +11,39 @@ const AuthForm = () => {
 
   return (
     <>
-      <Box bg={'#000'} borderRadius={10} overflow={'hidden'} w={300} h={420} position={'relative'} className="box">
+      <Box
+        bg={'#000'}
+        w={300}
+        h={isLogin ? 400 : 500}
+        borderStartStartRadius={50}
+        borderEndEndRadius={50}
+        borderStartEndRadius={10}
+        borderEndStartRadius={10}
+        overflow={'hidden'}
+        position={'relative'}
+        padding={4}>
         <Box className="borderLine" />
-        <Box inset={1} position={'absolute'} zIndex={2} bg={'#000310'} borderRadius={10} padding={4}>
-          <VStack spacing={4}>
-            <Image src="/logo.svg" h={24} cursor={'pointer'} alt="Snapcatt" />
-            {isLogin ? <Login /> : <Register />}
-            {/* ------ OU ------*/}
-            <Flex alignItems={'center'} justifyContent={'center'} my={4} gap={1} w={'full'}>
-              <Box flex={2} h={'1px'} bg={'gray.400'} />
-              <Text mx={1}>OU</Text>
-              <Box flex={2} h={'1px'} bg={'gray.400'} />
-            </Flex>
-            <GoogleAuth prefix={isLogin ? 'Entrar' : 'Cadastrar'} />
-          </VStack>
-        </Box>
+        <VStack
+          position={'absolute'}
+          padding={4}
+          inset={1}
+          bg={'#000310'}
+          zIndex={2}
+          borderStartStartRadius={50}
+          borderEndEndRadius={50}
+          borderStartEndRadius={10}
+          borderEndStartRadius={10}
+          spacing={4}>
+          <Image src="/logo.svg" h={24} cursor={'pointer'} alt="Snapcatt" />
+          {isLogin ? <Login /> : <Register />}
+          {/* ------ OU ------*/}
+          <Flex alignItems={'center'} justifyContent={'center'} my={4} gap={1} w={'full'}>
+            <Box flex={2} h={'1px'} bg={'gray.400'} />
+            <Text mx={1}>OU</Text>
+            <Box flex={2} h={'1px'} bg={'gray.400'} />
+          </Flex>
+          <GoogleAuth prefix={isLogin ? 'Entrar' : 'Cadastrar'} />
+        </VStack>
       </Box>
       <Box border={'1px solid'} borderRadius={10} padding={5} borderColor={'#111'} bg={'#000310'}>
         <Flex alignItems={'center'} justifyContent={'center'}>

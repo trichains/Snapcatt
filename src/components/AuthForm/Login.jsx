@@ -37,13 +37,7 @@ const Login = () => {
           {firebaseErrors[error.code]}
         </Alert>
       )}
-      <Button
-        w={'full'}
-        colorScheme="blue"
-        size={'sm'}
-        fontSize={14}
-        isLoading={loading}
-        onClick={() => login(inputs)}>
+      <Button w={'full'} colorScheme="gray" size={'sm'} fontSize={14} isLoading={loading} onClick={() => login(inputs)}>
         Entrar
       </Button>
     </>
