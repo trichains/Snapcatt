@@ -23,6 +23,7 @@ O Snapcatt é um projeto React + Vite que traz a experiência de uma rede social
 1. **Autenticação:**
    - Crie uma conta ou faça login facilmente.
    - Suporte para login via conta do Gmail.
+     
     ![image](https://github.com/trichains/Snapcatt/assets/25783243/f8e876f5-c1a1-4fd2-a7f8-e69521d9e6d3)
     ![image](https://github.com/trichains/Snapcatt/assets/25783243/32a17965-89e7-4e4b-ab05-e4cf74480156)
 
@@ -44,7 +45,7 @@ O Snapcatt é um projeto React + Vite que traz a experiência de uma rede social
     ![image](https://github.com/trichains/Snapcatt/assets/25783243/a6c806dc-ad8e-4bbc-9cac-411c121d6fc4)
 
    - Siga e deixe de seguir outros amantes de gatos.
-    - ![image](https://github.com/trichains/Snapcatt/assets/25783243/3025fca0-6c6c-4a10-9229-bbb07c68b0a9)
+![image](https://github.com/trichains/Snapcatt/assets/25783243/3025fca0-6c6c-4a10-9229-bbb07c68b0a9)
 
 5. **Controle Total:**
    - Delete suas próprias publicações.
@@ -57,9 +58,9 @@ Clique [aqui](https://snapcatt.vercel.app/) para experimentar a plataforma.
 
 ## Capturas de Tela
 
-![Login](![image](https://github.com/trichains/Snapcatt/assets/25783243/3dec78d4-52a3-4915-8207-9164c3984580)
+![Login](https://github.com/trichains/Snapcatt/assets/25783243/3dec78d4-52a3-4915-8207-9164c3984580)
 )
-![Feed](![image](https://github.com/trichains/Snapcatt/assets/25783243/d4fcc23f-8fb5-4040-90b2-1d33caf49d93)
+![Feed](![image](https://github.com/trichains/Snapcatt/assets/25783243/d4fcc23f-8fb5-4040-90b2-1d33caf49d93))
 )
 ![Perfil](![image](https://github.com/trichains/Snapcatt/assets/25783243/8393d3a8-a03d-4a01-9046-65430b8f1a53)
 )
