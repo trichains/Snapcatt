@@ -1,12 +1,15 @@
   ![image](https://raw.githubusercontent.com/trichains/Snapcatt/ce486df6265560fc41f8ce3e831c6dab83f62db1/public/logo.svg)
 
 Bem-vindo ao Snapcatt, a rede social exclusiva para amantes de gatos! 😺🌟
+
   ![image](https://github.com/trichains/Snapcatt/assets/25783243/ed9feb05-b1ea-49ed-bbe5-e4fe17646770)
 
 
 ## Visão Geral
 
 O Snapcatt é um projeto React + Vite que traz a experiência de uma rede social inspirada no Instagram, mas dedicada inteiramente aos nossos adoráveis amigos felinos. Desenvolvido com paixão, originalidade e funcionalidades robustas, o Snapcatt oferece uma plataforma única para compartilhar as melhores fotos e momentos dos seus gatinhos.
+
+O projeto está completamente responsivo para dispositivos móveis!
 
 ## Tecnologias Utilizadas
 
