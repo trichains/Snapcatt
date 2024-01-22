@@ -24,8 +24,7 @@ O Snapcatt é um projeto React + Vite que traz a experiência de uma rede social
    - Crie uma conta ou faça login facilmente.
    - Suporte para login via conta do Gmail.
      
-    ![image](https://github.com/trichains/Snapcatt/assets/25783243/f8e876f5-c1a1-4fd2-a7f8-e69521d9e6d3)
-    ![image](https://github.com/trichains/Snapcatt/assets/25783243/32a17965-89e7-4e4b-ab05-e4cf74480156)
+    ![image](https://github.com/trichains/Snapcatt/assets/25783243/2a93d556-62f2-4093-9d27-8a0565b2f678)
 
 2. **Perfil do Usuário:**
    - Personalize seu perfil com uma foto e informações.
