@@ -1,4 +1,4 @@
-  ![image](https://raw.githubusercontent.com/trichains/Snapcatt/ce486df6265560fc41f8ce3e831c6dab83f62db1/public/logo.svg)
+  # Snapcatt 🐾
 
 Bem-vindo ao Snapcatt, a rede social exclusiva para amantes de gatos! 😺🌟
 
