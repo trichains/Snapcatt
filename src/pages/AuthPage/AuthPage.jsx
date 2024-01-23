@@ -1,5 +1,6 @@
 import { Container, Flex, VStack, Box, Image } from '@chakra-ui/react';
 import AuthForm from '../../components/AuthForm/AuthForm';
+import { Link } from 'react-router-dom';
 
 const AuthPage = () => {
   return (
@@ -18,8 +19,12 @@ const AuthPage = () => {
               Desenvolvido por trichains
             </Box>
             <Flex gap={5} justifyContent={'center'}>
-              <Image src="/github.svg" h={30} alt="GitHub logo" />
-              <Image src="/portfolio.svg" h={30} alt="Portfolio logo" />
+              <Link to="https://github.com/trichains/Snapcatt" target="_blank" rel="noopener noreferrer">
+                <Image src="/github.svg" h={30} alt="GitHub logo" />
+              </Link>
+              <Link to="https://www.trichains.dev/" target="_blank" rel="noopener noreferrer">
+                <Image src="/portfolio.svg" h={30} alt="Portfolio logo" />
+              </Link>
             </Flex>
           </VStack>
         </Flex>
